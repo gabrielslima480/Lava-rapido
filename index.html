@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lava Rápido F1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Lava Rápido F1</h1>
+  <p>Agende sua lavagem com delivery!</p>
+</header>
+
+<section class="form-container">
+  <h2>Agendamento</h2>
+
+  <form id="agendamentoForm">
+    <input type="text" id="nome" placeholder="Seu nome" required>
+    <input type="tel" id="telefone" placeholder="Telefone" required>
+
+    <select id="servico" required>
+      <option value="">Escolha o serviço</option>
+      <option>Lavagem Simples</option>
+      <option>Lavagem Completa</option>
+      <option>Higienização Interna</option>
+    </select>
+
+    <input type="date" id="data" required>
+    <input type="time" id="hora" required>
+
+    <label>
+      <input type="checkbox" id="delivery">
+      Delivery (leva e traz)
+    </label>
+
+    <input type="text" id="endereco" placeholder="Endereço (se delivery)">
+
+    <button type="submit">Agendar</button>
+  </form>
+</section>
+
+<section class="lista">
+  <h2>Agendamentos</h2>
+  <ul id="listaAgendamentos"></ul>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
