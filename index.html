@@ -9,22 +9,45 @@
 <body>
 
 <header>
-  <h1>Lava Rápido F1</h1>
-  <div class="contact-info">
-    <a href="https://wa.me/551199516306673" class="contact-link whatsapp-link"><i class="fab fa-whatsapp"></i> (11) 9951630-6673</a>
-    <a href="#" class="contact-link facebook-link"><i class="fab fa-facebook"></i> Facebook</a>
-    <a href="mailto:contato@lavarapidof1.com.br" class="contact-link email-link"><i class="fas fa-envelope"></i> contato@lavarapidof1.com.br</a>
+  <div class="header-content">
+    <div id="logo-container" style="cursor: pointer;">
+      <img src="img/logo.png" alt="Lava Rápido F1 Logo" class="main-logo-img">
+    </div>
+    <div class="title-container">
+      <h1 id="main-logo" style="cursor: pointer;">Lava Rápido F1</h1>
+      <p class="slogan">"Brilho de campeão para o seu veículo"</p>
+    </div>
   </div>
-  <p>Sua lavagem com agendamento e delivery!</p>
-  <nav class="navbar" style="margin-top: 15px;">
-    <a href="#agendamento" style="color: white; margin-right: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Agendamento</a>
-    <a href="#fotos-servicos" style="color: white; margin-right: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Serviços</a>
-    <a href="#tabela-precos" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.1em;">Tabela de Preços</a>
-    <a href="#planos-assinatura" style="color: white; margin-left: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Planos de Assinatura</a>
+  <nav class="main-nav">
+    <div class="nav-links">
+      <a href="#" id="nav-home">Home</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#agendamento">Agendamento</a>
+      <a href="#fotos-servicos">Serviços</a>
+      <a href="#tabela-precos">Tabela de Preços</a>
+      <a href="#planos-assinatura">Planos de Assinatura</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://wa.me/551199516306673" class="social-link whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-link facebook facebook-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social-link instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:contato@lavarapidof1.com.br" class="social-link email" title="E-mail"><i class="fas fa-envelope"></i></a>
+    </div>
   </nav>
 </header>
 
-<section id="agendamento" class="form-container">
+<section id="sobre" class="lista">
+  <div class="sobre-container">
+    <h2>Sobre o Lava Rápido F1</h2>
+    <p>Nascido da paixão por automobilismo e limpeza impecável, o <strong>Lava Rápido F1</strong> combina a agilidade das pistas com o cuidado detalhista que seu veículo merece. Nossa missão é entregar o brilho de um carro de exposição em cada serviço realizado.</p>
+    <div class="equipe">
+      <h3>Nossa Equipe</h3>
+      <p>Contamos com profissionais treinados e dedicados, especialistas em estética automotiva, que utilizam apenas produtos de alta performance para garantir a proteção e conservação da pintura e do interior do seu carro.</p>
+    </div>
+  </div>
+</section>
+
+<section id="agendamento" class="form-container centered-section">
   <h2>Agendamento</h2>
 
   <form id="agendamentoForm">
@@ -56,7 +79,7 @@
 </section>
 
 <section id="fotos-servicos" style="clear: both; margin: 20px; padding-top: 20px;">
-  <h2 style="text-align: center;">Nossos Serviços</h2>
+  <h2 style="text-align: center;">Serviços</h2>
   <div class="gallery-container">
     <div class="gallery-item" data-servico="lavagem-simples">
       <img src="img/lavagem_simples.png" alt="Lavagem Simples">
@@ -155,6 +178,30 @@
     </ul>
   </div>
   <div style="clear: both;"></div>
+</section>
+
+<section id="avaliacoes" class="lista">
+  <h2>Avaliações dos Clientes</h2>
+  
+  <div class="feedback-form">
+    <form id="feedbackForm">
+      <input type="text" id="feedbackNome" placeholder="Seu Nome" required>
+      <div class="rating">
+        <span>Nota:</span>
+        <input type="radio" id="star5" name="rating" value="5" required /><label for="star5" title="5 estrelas"><i class="fas fa-star"></i></label>
+        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 estrelas"><i class="fas fa-star"></i></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 estrelas"><i class="fas fa-star"></i></label>
+        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 estrelas"><i class="fas fa-star"></i></label>
+        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 estrela"><i class="fas fa-star"></i></label>
+      </div>
+      <textarea id="feedbackComentario" rows="3" placeholder="Sua sugestão, elogio ou reclamação..." required style="width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit;"></textarea>
+      <button type="submit" style="background: #007BFF;">Enviar Avaliação</button>
+    </form>
+  </div>
+
+  <div id="listaFeedback" class="feedback-container">
+    <!-- As avaliações aparecerão aqui -->
+  </div>
 </section>
 
 <script src="script.js"></script>

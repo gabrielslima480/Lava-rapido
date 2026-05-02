@@ -46,16 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gera um código de agendamento aleatório (Ex: F1-A3B9C)
         const codigoAgendamento = 'F1-' + Math.random().toString(36).substring(2, 7).toUpperCase();
 
+        // Função simples para evitar XSS
+        const escapeHTML = (str) => String(str).replace(/[&<>"']/g, m => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[m]);
+
+        const safeNome = escapeHTML(nome);
+        const safeServico = escapeHTML(servico);
+        const safeData = escapeHTML(data);
+        const safeHora = escapeHTML(hora);
+        const safeTelefone = escapeHTML(telefone);
+        const safeEmail = escapeHTML(email);
+        const safeEndereco = escapeHTML(endereco);
+        const safeComentarios = escapeHTML(comentarios);
+
         // Formatação do item de agendamento
         const li = document.createElement('li');
-        let texto = `<strong>${nome}</strong> - ${servico} em ${data} às ${hora} (Tel: ${telefone}) <br>E-mail: ${email} <br><span style="color: #007BFF; font-weight: bold;">Código de Confirmação: ${codigoAgendamento}</span>`;
+        let texto = `<strong>${safeNome}</strong> - ${safeServico} em ${safeData} às ${safeHora} (Tel: ${safeTelefone}) <br>E-mail: ${safeEmail} <br><span style="color: #007BFF; font-weight: bold;">Código de Confirmação: ${codigoAgendamento}</span>`;
         
         if (delivery) {
-            texto += ` <br><em>Delivery para: ${endereco || 'Endereço não informado'}</em>`;
+            texto += ` <br><em>Delivery para: ${safeEndereco || 'Endereço não informado'}</em>`;
         }
         
         if (comentarios.trim() !== "") {
-            texto += ` <br><span style="color: #666; font-style: italic;"><strong>Observações:</strong> ${comentarios}</span>`;
+            texto += ` <br><span style="color: #666; font-style: italic;"><strong>Observações:</strong> ${safeComentarios}</span>`;
         }
         
         texto += avisoAssinaturaHTML;
@@ -75,6 +89,65 @@ document.addEventListener('DOMContentLoaded', () => {
         lista.scrollIntoView({ behavior: 'smooth' });
     });
 
+    // --- LÓGICA DE AVALIAÇÕES ---
+    const feedbackForm = document.getElementById('feedbackForm');
+    const listaFeedback = document.getElementById('listaFeedback');
+
+    // Função para carregar avaliações do localStorage
+    const carregarAvaliacoes = () => {
+        const avaliacoes = JSON.parse(localStorage.getItem('avaliacoesF1')) || [];
+        listaFeedback.innerHTML = '';
+        
+        avaliacoes.forEach(av => {
+            const card = document.createElement('div');
+            card.className = 'feedback-card';
+            
+            let estrelasHTML = '';
+            for(let i=1; i<=5; i++) {
+                estrelasHTML += `<i class="${i <= av.nota ? 'fas' : 'far'} fa-star"></i>`;
+            }
+
+            card.innerHTML = `
+                <h4>${escapeHTML(av.nome)}</h4>
+                <div class="stars">${estrelasHTML}</div>
+                <p>${escapeHTML(av.comentario)}</p>
+                <span class="date">${av.data}</span>
+            `;
+            listaFeedback.appendChild(card);
+        });
+    };
+
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nome = document.getElementById('feedbackNome').value;
+            const comentario = document.getElementById('feedbackComentario').value;
+            const nota = feedbackForm.querySelector('input[name="rating"]:checked').value;
+            const dataPost = new Date().toLocaleDateString('pt-BR');
+
+            const novaAvaliacao = {
+                nome,
+                comentario,
+                nota,
+                data: dataPost
+            };
+
+            // Salva no localStorage
+            const avaliacoes = JSON.parse(localStorage.getItem('avaliacoesF1')) || [];
+            avaliacoes.unshift(novaAvaliacao); // Adiciona no início da lista
+            localStorage.setItem('avaliacoesF1', JSON.stringify(avaliacoes));
+
+            // Feedback visual e limpa form
+            alert('Obrigado pela sua avaliação!');
+            feedbackForm.reset();
+            carregarAvaliacoes();
+        });
+    }
+
+    // Inicializa as avaliações ao carregar a página
+    carregarAvaliacoes();
+
     // Aviso para link do Facebook (em construção)
     const facebookLink = document.querySelector('.facebook-link');
     if (facebookLink) {
@@ -84,4 +157,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('A nossa página do Facebook estará disponível em breve!');
             }
         });
+    }
+
+    // Funcionalidade de retorno ao topo ao clicar no logo ou no título
+    const mainLogo = document.getElementById('main-logo');
+    const logoContainer = document.getElementById('logo-container');
+    const navHome = document.getElementById('nav-home');
+    
+    const scrollToTop = (e) => {
+        if (e) e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    if (mainLogo) mainLogo.addEventListener('click', scrollToTop);
+    if (logoContainer) logoContainer.addEventListener('click', scrollToTop);
+    if (navHome) navHome.addEventListener('click', scrollToTop);
 });
