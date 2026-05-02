@@ -4,15 +4,26 @@
   <meta charset="UTF-8">
   <title>Lava Rápido F1</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <header>
   <h1>Lava Rápido F1</h1>
-  <p>Agende sua lavagem com delivery!</p>
+  <div class="contact-info">
+    <a href="https://wa.me/551199516306673" class="contact-link whatsapp-link"><i class="fab fa-whatsapp"></i> (11) 9951630-6673</a>
+    <a href="#" class="contact-link facebook-link"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="mailto:contato@lavarapidof1.com.br" class="contact-link email-link"><i class="fas fa-envelope"></i> contato@lavarapidof1.com.br</a>
+  </div>
+  <p>Sua lavagem com agendamento e delivery!</p>
+  <nav class="navbar" style="margin-top: 15px;">
+    <a href="#agendamento" style="color: white; margin-right: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Agendamento</a>
+    <a href="#fotos-servicos" style="color: white; margin-right: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Serviços</a>
+    <a href="#tabela-precos" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.1em;">Tabela de Preços</a>
+  </nav>
 </header>
 
-<section class="form-container">
+<section id="agendamento" class="form-container">
   <h2>Agendamento</h2>
 
   <form id="agendamentoForm">
@@ -20,10 +31,12 @@
     <input type="tel" id="telefone" placeholder="Telefone" required>
 
     <select id="servico" required>
-      <option value="">Escolha o serviço</option>
-      <option>Lavagem Simples</option>
-      <option>Lavagem Completa</option>
-      <option>Higienização Interna</option>
+      <option value="Pacote Básico">Pacote Básico (R$ 50,00)</option>
+      <option value="Pacote Completo">Pacote Completo (R$ 100,00)</option>
+      <option value="Pacote PremiumF1">Pacote PremiumF1 (R$ 155,00)</option>
+      <option value="Lavagem Simples">Apenas Lavagem Simples (R$ 35,00)</option>
+      <option value="Higienização Interna">Apenas Higienização Interna (R$ 80,00)</option>
+      <option value="Polimento">Apenas Polimento (R$ 100,00)</option>
     </select>
 
     <input type="date" id="data" required>
@@ -44,16 +57,67 @@
   <h2>Agendamentos</h2>
   <ul id="listaAgendamentos"></ul>
 </section>
-<div class="columns">
-  <ul class="price">
-    <li class="header">Basico</li>
-    <li class="grey">R$ 50,00 Por Ano</li>
-    <li>Lavagem simples</li>
-    <li> </li>
-    <li>10 Domains</li>
-    <li>1GB Bandwidth</li>
-    <li class="grey"><a href="#" class="button">Sign Up</a></li>
-  </ul>
-</div>
+
+<section id="fotos-servicos" style="clear: both; margin: 20px; padding-top: 20px;">
+  <h2 style="text-align: center;">Nossos Serviços</h2>
+  <div class="gallery-container">
+    <div class="gallery-item" data-servico="lavagem-simples">
+      <img src="img/lavagem_simples.png" alt="Lavagem Simples">
+      <h3>Lavagem Simples</h3>
+    </div>
+    <div class="gallery-item" data-servico="higienizacao-interna">
+      <img src="img/higienizacao_interna.png" alt="Higienização Interna">
+      <h3>Higienização Interna</h3>
+    </div>
+    <div class="gallery-item" data-servico="polimento">
+      <img src="img/polimento_carro.png" alt="Polimento de Carro">
+      <h3>Polimento</h3>
+    </div>
+    <div class="gallery-item" data-servico="pretinho">
+      <img src="img/pretinho_pneu.png" alt="Pretinho no Pneu">
+      <h3>Pretinho nos Pneus</h3>
+    </div>
+  </div>
+</section>
+
+<section id="tabela-precos" style="clear: both; margin: 20px; padding-top: 20px;">
+  <h2 style="text-align: center;">Tabela de Preços</h2>
+  <div class="columns">
+    <ul class="price">
+      <li class="header">Básico</li>
+      <li class="grey">R$ 50,00</li>
+      <li>Lavagem simples</li>
+      <li>Aspiração</li>
+      <li>Pretinho nos pneus</li>
+      <li>Cera líquida</li>
+      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Pacote Básico'">Agendar</a></li>
+    </ul>
+  </div>
+  <div class="columns">
+    <ul class="price">
+      <li class="header" style="background-color:#4CAF50">Completo</li>
+      <li class="grey">R$ 100,00</li>
+      <li>Lavagem detalhada</li>
+      <li>Aspiração completa</li>
+      <li>Polimento</li>
+      <li>Higienização Interna</li>
+      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Pacote Completo'">Agendar</a></li>
+    </ul>
+  </div>
+  <div class="columns">
+    <ul class="price">
+      <li class="header" style="background-color:#f44336">PremiumF1</li>
+      <li class="grey">R$ 155,00</li>
+      <li>Tudo do Completo</li>
+      <li>Cristalização de Vidros</li>
+      <li>Hidratação de Couro</li>
+      <li>Oxi-Sanitização</li>
+      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Pacote PremiumF1'">Agendar</a></li>
+    </ul>
+  </div>
+  <div style="clear: both;"></div>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
