@@ -20,6 +20,7 @@
     <a href="#agendamento" style="color: white; margin-right: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Agendamento</a>
     <a href="#fotos-servicos" style="color: white; margin-right: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Serviços</a>
     <a href="#tabela-precos" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.1em;">Tabela de Preços</a>
+    <a href="#planos-assinatura" style="color: white; margin-left: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Planos de Assinatura</a>
   </nav>
 </header>
 
@@ -29,11 +30,15 @@
   <form id="agendamentoForm">
     <input type="text" id="nome" placeholder="Seu nome" required>
     <input type="tel" id="telefone" placeholder="Telefone" required>
+    <input type="email" id="email" placeholder="Seu e-mail (para avisos)" required>
 
     <select id="servico" required>
       <option value="Pacote Básico">Pacote Básico (R$ 50,00)</option>
       <option value="Pacote Completo">Pacote Completo (R$ 100,00)</option>
       <option value="Pacote PremiumF1">Pacote PremiumF1 (R$ 155,00)</option>
+      <option value="Plano 3 Meses">Assinatura 3 Meses</option>
+      <option value="Plano 5 Meses">Assinatura 5 Meses</option>
+      <option value="Plano 1 Ano">Assinatura 1 Ano</option>
       <option value="Lavagem Simples">Apenas Lavagem Simples (R$ 35,00)</option>
       <option value="Higienização Interna">Apenas Higienização Interna (R$ 80,00)</option>
       <option value="Polimento">Apenas Polimento (R$ 100,00)</option>
@@ -64,18 +69,22 @@
     <div class="gallery-item" data-servico="lavagem-simples">
       <img src="img/lavagem_simples.png" alt="Lavagem Simples">
       <h3>Lavagem Simples</h3>
+      <p class="service-description">Inclui a lavagem completa da lataria com shampoo neutro, limpeza externa dos vidros e secagem cuidadosa para não riscar a pintura do seu veículo.</p>
     </div>
     <div class="gallery-item" data-servico="higienizacao-interna">
       <img src="img/higienizacao_interna.png" alt="Higienização Interna">
       <h3>Higienização Interna</h3>
+      <p class="service-description">Limpeza profunda dos bancos (tecido ou couro), teto, carpetes e painel. Removemos manchas e ácaros, deixando um aroma agradável de carro novo.</p>
     </div>
     <div class="gallery-item" data-servico="polimento">
       <img src="img/polimento_carro.png" alt="Polimento de Carro">
       <h3>Polimento</h3>
+      <p class="service-description">Removemos micro-riscos, manchas superficiais e oxidação da pintura, devolvendo o brilho intenso e protegendo a lataria do seu carro.</p>
     </div>
     <div class="gallery-item" data-servico="pretinho">
       <img src="img/pretinho_pneu.png" alt="Pretinho no Pneu">
       <h3>Pretinho nos Pneus</h3>
+      <p class="service-description">Aplicação de produto especial que limpa, hidrata e devolve o brilho de pneu novo, além de criar uma camada protetora contra ressecamento.</p>
     </div>
   </div>
 </section>
@@ -113,6 +122,44 @@
       <li>Hidratação de Couro</li>
       <li>Oxi-Sanitização</li>
       <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Pacote PremiumF1'">Agendar</a></li>
+    </ul>
+  </div>
+  <div style="clear: both;"></div>
+</section>
+
+<section id="planos-assinatura" style="clear: both; margin: 20px; padding-top: 20px;">
+  <h2 style="text-align: center;">Planos de Assinatura</h2>
+  <div class="columns">
+    <ul class="price">
+      <li class="header" style="background-color:#333">3 Meses</li>
+      <li class="grey">R$ 55,00 /mês</li>
+      <li>Lavagem Básico Mensal</li>
+      <li>Avisos por e-mail</li>
+      <li>Prioridade no Agendamento</li>
+      <li>Renovação Fácil</li>
+      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Plano 3 Meses'">Assinar</a></li>
+    </ul>
+  </div>
+  <div class="columns">
+    <ul class="price">
+      <li class="header" style="background-color:#2196F3">5 Meses</li>
+      <li class="grey">R$ 85,00 /mês</li>
+      <li>Lavagem Completo Mensal</li>
+      <li>Avisos por e-mail</li>
+      <li>Prioridade no Agendamento</li>
+      <li>Renovação Fácil</li>
+      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Plano 5 Meses'">Assinar</a></li>
+    </ul>
+  </div>
+  <div class="columns">
+    <ul class="price">
+      <li class="header" style="background-color:#dc0909cc">1 Ano</li>
+      <li class="grey">R$ 195,00 /mês</li>
+      <li>Lavagem PremiumF1 Mensal</li>
+      <li>Avisos por e-mail</li>
+      <li>Prioridade no Agendamento</li>
+      <li>Brindes Exclusivos</li>
+      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Plano 1 Ano'">Assinar</a></li>
     </ul>
   </div>
   <div style="clear: both;"></div>

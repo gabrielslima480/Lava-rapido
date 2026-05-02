@@ -7,27 +7,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const nome = document.getElementById('nome').value;
         const telefone = document.getElementById('telefone').value;
+        const email = document.getElementById('email').value;
         const servico = document.getElementById('servico').value;
         const data = document.getElementById('data').value;
         const hora = document.getElementById('hora').value;
         const delivery = document.getElementById('delivery').checked;
         const endereco = document.getElementById('endereco').value;
 
+        // Lógica de planos de assinatura
+        let avisoAssinaturaHTML = "";
+        let avisoAlertaTXT = "";
+
+        if (servico.startsWith('Plano')) {
+            let meses = 0;
+            if (servico.includes('3 Meses')) meses = 3;
+            else if (servico.includes('5 Meses')) meses = 5;
+            else if (servico.includes('1 Ano')) meses = 12;
+
+            const [ano, mes, dia] = data.split('-');
+            const dataInicio = new Date(ano, mes - 1, dia);
+            
+            const dataFim = new Date(dataInicio);
+            dataFim.setMonth(dataFim.getMonth() + meses);
+
+            const dataAviso = new Date(dataFim);
+            dataAviso.setDate(dataAviso.getDate() - 3);
+
+            const dataFimFormatada = dataFim.toLocaleDateString('pt-BR');
+            const dataAvisoFormatada = dataAviso.toLocaleDateString('pt-BR');
+
+            avisoAssinaturaHTML = `<br><span style="color: #28a745;"><strong>Assinatura Válida até:</strong> ${dataFimFormatada}</span><br>
+            <span style="color: #FF9800;">Lembrete de renovação agendado para o e-mail <strong>${email}</strong> no dia ${dataAvisoFormatada} (3 dias antes do término).</span>`;
+
+            avisoAlertaTXT = `\n\nComo você contratou um ${servico}, um e-mail de aviso será enviado para ${email} no dia ${dataAvisoFormatada}, que é 3 dias antes do seu plano terminar (${dataFimFormatada}).`;
+        }
+
         // Gera um código de agendamento aleatório (Ex: F1-A3B9C)
         const codigoAgendamento = 'F1-' + Math.random().toString(36).substring(2, 7).toUpperCase();
 
         // Formatação do item de agendamento
         const li = document.createElement('li');
-        let texto = `<strong>${nome}</strong> - ${servico} em ${data} às ${hora} (Tel: ${telefone}) <br><span style="color: #007BFF; font-weight: bold;">Código de Confirmação: ${codigoAgendamento}</span>`;
+        let texto = `<strong>${nome}</strong> - ${servico} em ${data} às ${hora} (Tel: ${telefone}) <br>E-mail: ${email} <br><span style="color: #007BFF; font-weight: bold;">Código de Confirmação: ${codigoAgendamento}</span>`;
         
         if (delivery) {
             texto += ` <br><em>Delivery para: ${endereco || 'Endereço não informado'}</em>`;
         }
         
+        texto += avisoAssinaturaHTML;
+        
         li.innerHTML = texto;
         
         // Exibe um alerta de sucesso com o código para o cliente
-        alert(`Agendamento de ${servico} realizado com sucesso!\n\nSeu código de confirmação é: ${codigoAgendamento}\n\nGuarde este código para acompanhar o seu serviço.`);
+        alert(`Agendamento de ${servico} realizado com sucesso!\n\nSeu código de confirmação é: ${codigoAgendamento}\n\nGuarde este código para acompanhar o seu serviço.${avisoAlertaTXT}`);
         
         // Adiciona à lista
         lista.appendChild(li);
@@ -48,22 +79,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('A nossa página do Facebook estará disponível em breve!');
             }
         });
-    }
-
-    // Informações ao clicar nas imagens dos serviços
-    const informacoesServicos = {
-        'lavagem-simples': 'Lavagem Simples:\n\nInclui a lavagem completa da lataria com shampoo neutro, limpeza externa dos vidros e secagem cuidadosa para não riscar a pintura do seu veículo.',
-        'higienizacao-interna': 'Higienização Interna:\n\nLimpeza profunda dos bancos (tecido ou couro), teto, carpetes e painel. Removemos manchas e ácaros, deixando um aroma agradável de carro novo.',
-        'polimento': 'Polimento:\n\nRemovemos micro-riscos, manchas superficiais e oxidação da pintura, devolvendo o brilho intenso e protegendo a lataria do seu carro.',
-        'pretinho': 'Pretinho nos Pneus:\n\nAplicação de produto especial que limpa, hidrata e devolve o brilho de pneu novo, além de criar uma camada protetora contra ressecamento.'
-    };
-
-    document.querySelectorAll('.gallery-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const servico = item.getAttribute('data-servico');
-            if (servico && informacoesServicos[servico]) {
-                alert(informacoesServicos[servico]);
-            }
-        });
-    });
 });
