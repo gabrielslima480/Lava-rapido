@@ -32,17 +32,7 @@
     <input type="tel" id="telefone" placeholder="Telefone" required>
     <input type="email" id="email" placeholder="Seu e-mail (para avisos)" required>
 
-    <select id="servico" required>
-      <option value="Pacote Básico">Pacote Básico (R$ 50,00)</option>
-      <option value="Pacote Completo">Pacote Completo (R$ 100,00)</option>
-      <option value="Pacote PremiumF1">Pacote PremiumF1 (R$ 155,00)</option>
-      <option value="Plano 3 Meses">Assinatura 3 Meses</option>
-      <option value="Plano 5 Meses">Assinatura 5 Meses</option>
-      <option value="Plano 1 Ano">Assinatura 1 Ano</option>
-      <option value="Lavagem Simples">Apenas Lavagem Simples (R$ 35,00)</option>
-      <option value="Higienização Interna">Apenas Higienização Interna (R$ 80,00)</option>
-      <option value="Polimento">Apenas Polimento (R$ 100,00)</option>
-    </select>
+    <input type="text" id="servico" placeholder="Serviço selecionado (clique em 'Agendar' nas tabelas abaixo)" readonly required style="background-color: #f8f9fa; cursor: not-allowed; border: 1px solid #ced4da; font-weight: bold; color: #495057; text-align: center;">
 
     <input type="date" id="data" required>
     <input type="time" id="hora" required>
@@ -53,6 +43,8 @@
     </label>
 
     <input type="text" id="endereco" placeholder="Endereço (se delivery)">
+
+    <textarea id="comentarios" rows="3" placeholder="Observações ou detalhes do serviço (Ex: focar na limpeza do porta-malas, manchas no banco, etc.)" style="width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit;"></textarea>
 
     <button type="submit">Agendar</button>
   </form>
@@ -116,7 +108,7 @@
   <div class="columns">
     <ul class="price">
       <li class="header" style="background-color:#f44336">PremiumF1</li>
-      <li class="grey">R$ 155,00</li>
+      <li class="grey">R$ 150,00</li>
       <li>Tudo do Completo</li>
       <li>Cristalização de Vidros</li>
       <li>Hidratação de Couro</li>

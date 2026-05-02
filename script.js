@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hora = document.getElementById('hora').value;
         const delivery = document.getElementById('delivery').checked;
         const endereco = document.getElementById('endereco').value;
+        const comentarios = document.getElementById('comentarios') ? document.getElementById('comentarios').value : "";
 
         // Lógica de planos de assinatura
         let avisoAssinaturaHTML = "";
@@ -51,6 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (delivery) {
             texto += ` <br><em>Delivery para: ${endereco || 'Endereço não informado'}</em>`;
+        }
+        
+        if (comentarios.trim() !== "") {
+            texto += ` <br><span style="color: #666; font-style: italic;"><strong>Observações:</strong> ${comentarios}</span>`;
         }
         
         texto += avisoAssinaturaHTML;
