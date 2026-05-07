@@ -117,16 +117,203 @@ header {
 .social-link.instagram:hover { color: #E4405F; }
 .social-link.email:hover { color: #FFD700; }
 
-.form-container {
-  background: white;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
+.agendamento-section {
+  background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Fallback image */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 40px 0;
 }
 
-.centered-section {
-  max-width: 800px;
-  margin: 20px auto !important;
+/* Please save the user provided image as img/agendamento_bg.jpg to use it */
+.agendamento-section[style*="agendamento_bg"] {
+  background-image: url('img/agendamento_bg.jpg');
+}
+
+.agendamento-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  color: white;
+}
+
+.glassmorphism h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.form-subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ddd;
+  font-size: 0.9em;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-group i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #007BFF;
+  font-size: 1.1em;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+
+.input-group textarea {
+  padding-top: 15px;
+  resize: vertical;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+  background: #fff;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.row .input-group {
+  flex: 1;
+}
+
+.delivery-option {
+  margin: 20px 0;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 1em;
+  user-select: none;
+  color: #fff;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #28a745;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.btn-agendar {
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-agendar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .glassmorphism {
+    padding: 25px;
+  }
 }
 
 /* Seção Sobre Nós */

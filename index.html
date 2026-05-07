@@ -1,210 +1,271 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Lava Rápido F1</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-<header>
-  <div class="header-content">
-    <div id="logo-container" style="cursor: pointer;">
-      <img src="img/logo.png" alt="Lava Rápido F1 Logo" class="main-logo-img">
-    </div>
-    <div class="title-container">
-      <h1 id="main-logo" style="cursor: pointer;">Lava Rápido F1</h1>
-      <p class="slogan">"Brilho de campeão para o seu veículo"</p>
-    </div>
-  </div>
-  <nav class="main-nav">
-    <div class="nav-links">
-      <a href="#" id="nav-home">Home</a>
-      <a href="#sobre">Sobre Nós</a>
-      <a href="#agendamento">Agendamento</a>
-      <a href="#fotos-servicos">Serviços</a>
-      <a href="#tabela-precos">Tabela de Preços</a>
-      <a href="#planos-assinatura">Planos de Assinatura</a>
-    </div>
-    <div class="social-icons">
-      <a href="https://wa.me/551199516306673" class="social-link whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="#" class="social-link facebook facebook-link" title="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="social-link instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="mailto:contato@lavarapidof1.com.br" class="social-link email" title="E-mail"><i class="fas fa-envelope"></i></a>
-    </div>
-  </nav>
-</header>
-
-<section id="agendamento" class="form-container centered-section">
-  <h2>Agendamento</h2>
-
-  <form id="agendamentoForm">
-    <input type="text" id="nome" placeholder="Seu nome" required>
-    <input type="tel" id="telefone" placeholder="Telefone" required>
-    <input type="email" id="email" placeholder="Seu e-mail (para avisos)" required>
-
-    <input type="text" id="servico" placeholder="Serviço selecionado (clique em 'Agendar' nas tabelas abaixo)" readonly required style="background-color: #f8f9fa; cursor: not-allowed; border: 1px solid #ced4da; font-weight: bold; color: #495057; text-align: center;">
-
-    <input type="date" id="data" required>
-    <input type="time" id="hora" required>
-
-    <label>
-      <input type="checkbox" id="delivery">
-      Delivery (leva e traz)
-    </label>
-
-    <input type="text" id="endereco" placeholder="Endereço (se delivery)">
-
-    <textarea id="comentarios" rows="3" placeholder="Observações ou detalhes do serviço (Ex: focar na limpeza do porta-malas, manchas no banco, etc.)" style="width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit;"></textarea>
-
-    <button type="submit">Agendar</button>
-  </form>
-</section>
-
-<section class="lista">
-  <h2>Agendamentos</h2>
-  <ul id="listaAgendamentos"></ul>
-</section>
-
-
-
-<section id="fotos-servicos" style="clear: both; margin: 20px; padding-top: 20px;">
-  <h2 style="text-align: center;">Serviços</h2>
-  <div class="gallery-container">
-    <div class="gallery-item" data-servico="lavagem-simples">
-      <img src="img/lavagem_simples.png" alt="Lavagem Simples">
-      <h3>Lavagem Simples</h3>
-      <p class="service-description">Inclui a lavagem completa da lataria com shampoo neutro, limpeza externa dos vidros e secagem cuidadosa para não riscar a pintura do seu veículo.</p>
-    </div>
-    <div class="gallery-item" data-servico="higienizacao-interna">
-      <img src="img/higienizacao_interna.png" alt="Higienização Interna">
-      <h3>Higienização Interna</h3>
-      <p class="service-description">Limpeza profunda dos bancos (tecido ou couro), teto, carpetes e painel. Removemos manchas e ácaros, deixando um aroma agradável de carro novo.</p>
-    </div>
-    <div class="gallery-item" data-servico="polimento">
-      <img src="img/polimento_carro.png" alt="Polimento de Carro">
-      <h3>Polimento</h3>
-      <p class="service-description">Removemos micro-riscos, manchas superficiais e oxidação da pintura, devolvendo o brilho intenso e protegendo a lataria do seu carro.</p>
-    </div>
-    <div class="gallery-item" data-servico="pretinho">
-      <img src="img/pretinho_pneu.png" alt="Pretinho no Pneu">
-      <h3>Pretinho nos Pneus</h3>
-      <p class="service-description">Aplicação de produto especial que limpa, hidrata e devolve o brilho de pneu novo, além de criar uma camada protetora contra ressecamento.</p>
-    </div>
-  </div>
-</section>
-
-<section id="tabela-precos" style="clear: both; margin: 20px; padding-top: 20px;">
-  <h2 style="text-align: center;">Tabela de Preços</h2>
-  <div class="columns">
-    <ul class="price">
-      <li class="header">Básico</li>
-      <li class="grey">R$ 50,00</li>
-      <li>Lavagem simples</li>
-      <li>Aspiração</li>
-      <li>Pretinho nos pneus</li>
-      <li>Cera líquida</li>
-      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Pacote Básico'">Agendar</a></li>
-    </ul>
-  </div>
-  <div class="columns">
-    <ul class="price">
-      <li class="header" style="background-color:#4CAF50">Completo</li>
-      <li class="grey">R$ 100,00</li>
-      <li>Lavagem detalhada</li>
-      <li>Aspiração completa</li>
-      <li>Polimento</li>
-      <li>Higienização Interna</li>
-      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Pacote Completo'">Agendar</a></li>
-    </ul>
-  </div>
-  <div class="columns">
-    <ul class="price">
-      <li class="header" style="background-color:#f44336">PremiumF1</li>
-      <li class="grey">R$ 150,00</li>
-      <li>Tudo do Completo</li>
-      <li>Cristalização de Vidros</li>
-      <li>Hidratação de Couro</li>
-      <li>Oxi-Sanitização</li>
-      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Pacote PremiumF1'">Agendar</a></li>
-    </ul>
-  </div>
-  <div style="clear: both;"></div>
-</section>
-
-<section id="planos-assinatura" style="clear: both; margin: 20px; padding-top: 20px;">
-  <h2 style="text-align: center;">Planos de Assinatura</h2>
-  <div class="columns">
-    <ul class="price">
-      <li class="header" style="background-color:#333">3 Meses</li>
-      <li class="grey">R$ 55,00 /mês</li>
-      <li>Lavagem Básico Mensal</li>
-      <li>Avisos por e-mail</li>
-      <li>Prioridade no Agendamento</li>
-      <li>Renovação Fácil</li>
-      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Plano 3 Meses'">Assinar</a></li>
-    </ul>
-  </div>
-  <div class="columns">
-    <ul class="price">
-      <li class="header" style="background-color:#2196F3">5 Meses</li>
-      <li class="grey">R$ 85,00 /mês</li>
-      <li>Lavagem Completo Mensal</li>
-      <li>Avisos por e-mail</li>
-      <li>Prioridade no Agendamento</li>
-      <li>Renovação Fácil</li>
-      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Plano 5 Meses'">Assinar</a></li>
-    </ul>
-  </div>
-  <div class="columns">
-    <ul class="price">
-      <li class="header" style="background-color:#dc0909cc">1 Ano</li>
-      <li class="grey">R$ 195,00 /mês</li>
-      <li>Lavagem PremiumF1 Mensal</li>
-      <li>Avisos por e-mail</li>
-      <li>Prioridade no Agendamento</li>
-      <li>Brindes Exclusivos</li>
-      <li class="grey"><a href="#agendamento" class="button" onclick="document.getElementById('servico').value='Plano 1 Ano'">Assinar</a></li>
-    </ul>
-  </div>
-  <div style="clear: both;"></div>
-</section>
-<section id="sobre" class="lista">
-  <div class="sobre-container">
-    <h2>Sobre o Lava Rápido F1</h2>
-    <p>Nascido da paixão por automobilismo e limpeza impecável, o <strong>Lava Rápido F1</strong> combina a agilidade das pistas com o cuidado detalhista que seu veículo merece. Nossa missão é entregar o brilho de um carro de exposição em cada serviço realizado.</p>
-    <div class="equipe">
-      <h3>Nossa Equipe</h3>
-      <p>Contamos com profissionais treinados e dedicados, especialistas em estética automotiva, que utilizam apenas produtos de alta performance para garantir a proteção e conservação da pintura e do interior do seu carro.</p>
-    </div>
-  </div>
-</section>
-
-<section id="avaliacoes" class="lista">
-  <h2>Avaliações dos Clientes</h2>
-  
-  <div class="feedback-form">
-    <form id="feedbackForm">
-      <input type="text" id="feedbackNome" placeholder="Seu Nome" required>
-      <div class="rating">
-        <span>Nota:</span>
-        <input type="radio" id="star5" name="rating" value="5" required /><label for="star5" title="5 estrelas"><i class="fas fa-star"></i></label>
-        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 estrelas"><i class="fas fa-star"></i></label>
-        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 estrelas"><i class="fas fa-star"></i></label>
-        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 estrelas"><i class="fas fa-star"></i></label>
-        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 estrela"><i class="fas fa-star"></i></label>
+  <header>
+    <div class="header-content">
+      <div id="logo-container" style="cursor: pointer;">
+        <img src="img/logo.png" alt="Lava Rápido F1 Logo" class="main-logo-img">
       </div>
-      <textarea id="feedbackComentario" rows="3" placeholder="Sua sugestão, elogio ou reclamação..." required style="width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit;"></textarea>
-      <button type="submit" style="background: #007BFF;">Enviar Avaliação</button>
-    </form>
-  </div>
+      <div class="title-container">
+        <h1 id="main-logo" style="cursor: pointer;">Lava Rápido F1</h1>
+        <p class="slogan">"Brilho de campeão para o seu veículo"</p>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <div class="nav-links">
+        <a href="#" id="nav-home">Home</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#agendamento">Agendamento</a>
+        <a href="#fotos-servicos">Serviços</a>
+        <a href="#tabela-precos">Tabela de Preços</a>
+        <a href="#planos-assinatura">Planos de Assinatura</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://wa.me/5511937775104" class="social-link whatsapp" title="WhatsApp"><i
+            class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-link facebook facebook-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-link instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:contato@lavarapidof1.com.br" class="social-link email" title="E-mail"><i
+            class="fas fa-envelope"></i></a>
+      </div>
+    </nav>
+  </header>
 
-  <div id="listaFeedback" class="feedback-container">
-    <!-- As avaliações aparecerão aqui -->
-  </div>
-</section>
+  <section id="agendamento" class="agendamento-section">
+    <div class="agendamento-overlay">
+      <div class="form-container glassmorphism">
+        <h2>Solicitar Agendamento</h2>
+        <p class="form-subtitle">Preencha os dados abaixo e entraremos em contato</p>
 
-<script src="script.js"></script>
+        <form id="agendamentoForm">
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="nome" placeholder="Seu nome completo" required>
+          </div>
+
+          <div class="input-group">
+            <i class="fas fa-phone"></i>
+            <input type="tel" id="telefone" placeholder="Telefone (WhatsApp)" required>
+          </div>
+
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="E-mail para avisos" required>
+          </div>
+
+          <div class="input-group">
+            <i class="fas fa-car"></i>
+            <input type="text" id="servico" placeholder="Serviço selecionado" readonly required>
+          </div>
+
+          <div class="row">
+            <div class="input-group">
+              <i class="fas fa-calendar"></i>
+              <input type="date" id="data" required>
+            </div>
+            <div class="input-group">
+              <i class="fas fa-clock"></i>
+              <input type="time" id="hora" required>
+            </div>
+          </div>
+
+          <div class="delivery-option">
+            <label class="checkbox-container">
+              <input type="checkbox" id="delivery">
+              <span class="checkmark"></span>
+              Opção de Delivery (Leva e Traz)
+            </label>
+          </div>
+
+          <div id="endereco-container" class="input-group" style="display: none;">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" id="endereco" placeholder="Endereço para retirada">
+          </div>
+
+          <div class="input-group">
+            <i class="fas fa-comment-alt"></i>
+            <textarea id="comentarios" rows="3"
+              placeholder="Observações (ex: foco nas rodas, manchas no banco...)"></textarea>
+          </div>
+
+          <button type="submit" class="btn-agendar">Confirmar Agendamento <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="lista">
+    <h2>Agendamentos</h2>
+    <ul id="listaAgendamentos"></ul>
+  </section>
+
+
+
+  <section id="fotos-servicos" style="clear: both; margin: 20px; padding-top: 20px;">
+    <h2 style="text-align: center;">Serviços</h2>
+    <div class="gallery-container">
+      <div class="gallery-item" data-servico="lavagem-simples">
+        <img src="img/lavagem_simples.png" alt="Lavagem Simples">
+        <h3>Lavagem Simples</h3>
+        <p class="service-description">Inclui a lavagem completa da lataria com shampoo neutro, limpeza externa dos
+          vidros e secagem cuidadosa para não riscar a pintura do seu veículo.</p>
+      </div>
+      <div class="gallery-item" data-servico="higienizacao-interna">
+        <img src="img/higienizacao_interna.png" alt="Higienização Interna">
+        <h3>Higienização Interna</h3>
+        <p class="service-description">Limpeza profunda dos bancos (tecido ou couro), teto, carpetes e painel. Removemos
+          manchas e ácaros, deixando um aroma agradável de carro novo.</p>
+      </div>
+      <div class="gallery-item" data-servico="polimento">
+        <img src="img/polimento_carro.png" alt="Polimento de Carro">
+        <h3>Polimento</h3>
+        <p class="service-description">Removemos micro-riscos, manchas superficiais e oxidação da pintura, devolvendo o
+          brilho intenso e protegendo a lataria do seu carro.</p>
+      </div>
+      <div class="gallery-item" data-servico="pretinho">
+        <img src="img/pretinho_pneu.png" alt="Pretinho no Pneu">
+        <h3>Pretinho nos Pneus</h3>
+        <p class="service-description">Aplicação de produto especial que limpa, hidrata e devolve o brilho de pneu novo,
+          além de criar uma camada protetora contra ressecamento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tabela-precos" style="clear: both; margin: 20px; padding-top: 20px;">
+    <h2 style="text-align: center;">Tabela de Preços</h2>
+    <div class="columns">
+      <ul class="price">
+        <li class="header">Básico</li>
+        <li class="grey">R$ 50,00</li>
+        <li>Lavagem simples</li>
+        <li>Aspiração</li>
+        <li>Pretinho nos pneus</li>
+        <li>Cera líquida</li>
+        <li class="grey"><a href="#agendamento" class="button"
+            onclick="document.getElementById('servico').value='Pacote Básico'">Agendar</a></li>
+      </ul>
+    </div>
+    <div class="columns">
+      <ul class="price">
+        <li class="header" style="background-color:#4CAF50">Completo</li>
+        <li class="grey">R$ 100,00</li>
+        <li>Lavagem detalhada</li>
+        <li>Aspiração completa</li>
+        <li>Polimento</li>
+        <li>Higienização Interna</li>
+        <li class="grey"><a href="#agendamento" class="button"
+            onclick="document.getElementById('servico').value='Pacote Completo'">Agendar</a></li>
+      </ul>
+    </div>
+    <div class="columns">
+      <ul class="price">
+        <li class="header" style="background-color:#f44336">PremiumF1</li>
+        <li class="grey">R$ 150,00</li>
+        <li>Tudo do Completo</li>
+        <li>Cristalização de Vidros</li>
+        <li>Hidratação de Couro</li>
+        <li>Oxi-Sanitização</li>
+        <li class="grey"><a href="#agendamento" class="button"
+            onclick="document.getElementById('servico').value='Pacote PremiumF1'">Agendar</a></li>
+      </ul>
+    </div>
+    <div style="clear: both;"></div>
+  </section>
+
+  <section id="planos-assinatura" style="clear: both; margin: 20px; padding-top: 20px;">
+    <h2 style="text-align: center;">Planos de Assinatura</h2>
+    <div class="columns">
+      <ul class="price">
+        <li class="header" style="background-color:#333">3 Meses</li>
+        <li class="grey">R$ 55,00 /mês</li>
+        <li>Lavagem Básico Mensal</li>
+        <li>Avisos por e-mail</li>
+        <li>Prioridade no Agendamento</li>
+        <li>Renovação Fácil</li>
+        <li class="grey"><a href="#agendamento" class="button"
+            onclick="document.getElementById('servico').value='Plano 3 Meses'">Assinar</a></li>
+      </ul>
+    </div>
+    <div class="columns">
+      <ul class="price">
+        <li class="header" style="background-color:#2196F3">5 Meses</li>
+        <li class="grey">R$ 85,00 /mês</li>
+        <li>Lavagem Completo Mensal</li>
+        <li>Avisos por e-mail</li>
+        <li>Prioridade no Agendamento</li>
+        <li>Renovação Fácil</li>
+        <li class="grey"><a href="#agendamento" class="button"
+            onclick="document.getElementById('servico').value='Plano 5 Meses'">Assinar</a></li>
+      </ul>
+    </div>
+    <div class="columns">
+      <ul class="price">
+        <li class="header" style="background-color:#dc0909cc">1 Ano</li>
+        <li class="grey">R$ 195,00 /mês</li>
+        <li>Lavagem PremiumF1 Mensal</li>
+        <li>Avisos por e-mail</li>
+        <li>Prioridade no Agendamento</li>
+        <li>Brindes Exclusivos</li>
+        <li class="grey"><a href="#agendamento" class="button"
+            onclick="document.getElementById('servico').value='Plano 1 Ano'">Assinar</a></li>
+      </ul>
+    </div>
+    <div style="clear: both;"></div>
+  </section>
+  <section id="sobre" class="lista">
+    <div class="sobre-container">
+      <h2>Sobre o Lava Rápido F1</h2>
+      <p>Nascido da paixão por automobilismo e limpeza impecável, o <strong>Lava Rápido F1</strong> combina a agilidade
+        das pistas com o cuidado detalhista que seu veículo merece. Nossa missão é entregar o brilho de um carro de
+        exposição em cada serviço realizado.</p>
+      <div class="equipe">
+        <h3>Nossa Equipe</h3>
+        <p>Contamos com profissionais treinados e dedicados, especialistas em estética automotiva, que utilizam apenas
+          produtos de alta performance para garantir a proteção e conservação da pintura e do interior do seu carro.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="avaliacoes" class="lista">
+    <h2>Avaliações dos Clientes</h2>
+
+    <div class="feedback-form">
+      <form id="feedbackForm">
+        <input type="text" id="feedbackNome" placeholder="Seu Nome" required>
+        <div class="rating">
+          <span>Nota:</span>
+          <input type="radio" id="star5" name="rating" value="5" required /><label for="star5" title="5 estrelas"><i
+              class="fas fa-star"></i></label>
+          <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 estrelas"><i
+              class="fas fa-star"></i></label>
+          <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 estrelas"><i
+              class="fas fa-star"></i></label>
+          <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 estrelas"><i
+              class="fas fa-star"></i></label>
+          <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 estrela"><i
+              class="fas fa-star"></i></label>
+        </div>
+        <textarea id="feedbackComentario" rows="3" placeholder="Sua sugestão, elogio ou reclamação..." required
+          style="width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit;"></textarea>
+        <button type="submit" style="background: #007BFF;">Enviar Avaliação</button>
+      </form>
+    </div>
+
+    <div id="listaFeedback" class="feedback-container">
+      <!-- As avaliações aparecerão aqui -->
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
+
 </html>

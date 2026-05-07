@@ -1,6 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('agendamentoForm');
     const lista = document.getElementById('listaAgendamentos');
+    const deliveryCheckbox = document.getElementById('delivery');
+    const enderecoContainer = document.getElementById('endereco-container');
+    const enderecoInput = document.getElementById('endereco');
+
+    if (deliveryCheckbox && enderecoContainer) {
+        deliveryCheckbox.addEventListener('change', () => {
+            if (deliveryCheckbox.checked) {
+                enderecoContainer.style.display = 'block';
+                enderecoInput.setAttribute('required', 'true');
+            } else {
+                enderecoContainer.style.display = 'none';
+                enderecoInput.removeAttribute('required');
+            }
+        });
+    }
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
