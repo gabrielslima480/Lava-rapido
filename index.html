@@ -3,7 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Lava Rápido F1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lava Rápido F1 - Especialistas em estética automotiva, lavagem detalhada, polimento e higienização. Brilho de campeão para o seu veículo.">
+  <meta name="keywords" content="lava rapido, estética automotiva, polimento, higienização, lavagem de carro, F1">
+  <title>Lava Rápido F1 | Brilho de Campeão</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -49,31 +52,37 @@
         <form id="agendamentoForm">
           <div class="input-group">
             <i class="fas fa-user"></i>
+            <label for="nome" class="sr-only">Nome Completo</label>
             <input type="text" id="nome" placeholder="Seu nome completo" required>
           </div>
 
           <div class="input-group">
             <i class="fas fa-phone"></i>
+            <label for="telefone" class="sr-only">Telefone (WhatsApp)</label>
             <input type="tel" id="telefone" placeholder="Telefone (WhatsApp)" required>
           </div>
 
           <div class="input-group">
             <i class="fas fa-envelope"></i>
+            <label for="email" class="sr-only">E-mail</label>
             <input type="email" id="email" placeholder="E-mail para avisos" required>
           </div>
 
           <div class="input-group">
             <i class="fas fa-car"></i>
+            <label for="servico" class="sr-only">Serviço</label>
             <input type="text" id="servico" placeholder="Serviço selecionado" readonly required>
           </div>
 
           <div class="row">
             <div class="input-group">
               <i class="fas fa-calendar"></i>
+              <label for="data" class="sr-only">Data</label>
               <input type="date" id="data" required>
             </div>
             <div class="input-group">
               <i class="fas fa-clock"></i>
+              <label for="hora" class="sr-only">Hora</label>
               <input type="time" id="hora" required>
             </div>
           </div>
@@ -88,11 +97,13 @@
 
           <div id="endereco-container" class="input-group" style="display: none;">
             <i class="fas fa-map-marker-alt"></i>
+            <label for="endereco" class="sr-only">Endereço para retirada</label>
             <input type="text" id="endereco" placeholder="Endereço para retirada">
           </div>
 
           <div class="input-group">
             <i class="fas fa-comment-alt"></i>
+            <label for="comentarios" class="sr-only">Observações</label>
             <textarea id="comentarios" rows="3"
               placeholder="Observações (ex: foco nas rodas, manchas no banco...)"></textarea>
           </div>
@@ -103,9 +114,11 @@
     </div>
   </section>
 
-  <section class="lista">
-    <h2>Agendamentos</h2>
-    <ul id="listaAgendamentos"></ul>
+  <section id="lista-agendamentos-section" class="agendamentos-list">
+    <h2 class="section-title-neon">Meus <span>Agendamentos</span></h2>
+    <div class="glass-container">
+      <ul id="listaAgendamentos"></ul>
+    </div>
   </section>
 
 
@@ -115,7 +128,8 @@
       <h2>Serviços</h2>
       <div class="servicos-banner-container">
         <img src="Serviços/Serviços.png" alt="Nossos Serviços - Lava Rápido F1" class="servicos-banner">
-        <p class="servicos-info">Oferecemos lavagem detalhada, higienização, polimento e muito mais para o seu veículo.</p>
+        <p class="servicos-info">Oferecemos lavagem detalhada, higienização, polimento e muito mais para o seu veículo.
+        </p>
       </div>
     </div>
   </section>
@@ -136,7 +150,8 @@
           <li><i class="fas fa-check-circle"></i> Pretinho nos pneus</li>
           <li><i class="fas fa-check-circle"></i> Cera líquida</li>
         </ul>
-        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Pacote Básico'">Agendar</a>
+        <a href="#agendamento" class="btn-glass"
+          onclick="document.getElementById('servico').value='Pacote Básico'">Agendar</a>
       </div>
 
       <div class="glass-card highlight">
@@ -152,7 +167,8 @@
           <li><i class="fas fa-check-circle"></i> Polimento</li>
           <li><i class="fas fa-check-circle"></i> Higienização Interna</li>
         </ul>
-        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Pacote Completo'">Agendar</a>
+        <a href="#agendamento" class="btn-glass"
+          onclick="document.getElementById('servico').value='Pacote Completo'">Agendar</a>
       </div>
 
       <div class="glass-card">
@@ -168,7 +184,8 @@
           <li><i class="fas fa-check-circle"></i> Hidratação de Couro</li>
           <li><i class="fas fa-check-circle"></i> Oxi-Sanitização</li>
         </ul>
-        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Pacote PremiumF1'">Agendar</a>
+        <a href="#agendamento" class="btn-glass"
+          onclick="document.getElementById('servico').value='Pacote PremiumF1'">Agendar</a>
       </div>
     </div>
 
@@ -213,7 +230,8 @@
           <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
           <li><i class="fas fa-check-circle"></i> Renovação Fácil</li>
         </ul>
-        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Plano 3 Meses'">Assinar</a>
+        <a href="#agendamento" class="btn-glass"
+          onclick="document.getElementById('servico').value='Plano 3 Meses'">Assinar</a>
       </div>
 
       <div class="glass-card highlight">
@@ -229,7 +247,8 @@
           <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
           <li><i class="fas fa-check-circle"></i> Renovação Fácil</li>
         </ul>
-        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Plano 5 Meses'">Assinar</a>
+        <a href="#agendamento" class="btn-glass"
+          onclick="document.getElementById('servico').value='Plano 5 Meses'">Assinar</a>
       </div>
 
       <div class="glass-card">
@@ -245,7 +264,8 @@
           <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
           <li><i class="fas fa-check-circle"></i> Brindes Exclusivos</li>
         </ul>
-        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Plano 1 Ano'">Assinar</a>
+        <a href="#agendamento" class="btn-glass"
+          onclick="document.getElementById('servico').value='Plano 1 Ano'">Assinar</a>
       </div>
     </div>
   </section>
@@ -253,14 +273,16 @@
     <div class="sobre-overlay">
       <div class="sobre-container">
         <h2>Sobre o Lava Rápido F1</h2>
-        <p>Nascido da paixão por automobilismo e limpeza impecável, o <strong>Lava Rápido F1</strong> combina a agilidade
+        <p>Nascido da paixão por automobilismo e limpeza impecável, o <strong>Lava Rápido F1</strong> combina a
+          agilidade
           das pistas com o cuidado detalhista que seu veículo merece. Nossa missão é entregar o brilho de um carro de
           exposição em cada serviço realizado.</p>
         <div class="equipe">
           <h3>Nossa Equipe</h3>
           <p>Contamos com profissionais treinados e dedicados, especialistas em estética automotiva, que utilizam apenas
-            produtos de alta performance para garantir a proteção e conservação da pintura e do interior do seu carro.</p>
-          
+            produtos de alta performance para garantir a proteção e conservação da pintura e do interior do seu carro.
+          </p>
+
           <div class="equipe-principal">
             <img src="Equipe/Equipe F1.png" alt="Equipe Lava Rápido F1" class="foto-equipe-f1">
             <p class="legenda-equipe">Nossa equipe de especialistas pronta para cuidar do seu veículo.</p>
@@ -270,14 +292,15 @@
     </div>
   </section>
 
-  <section id="avaliacoes" class="lista">
-    <h2>Avaliações dos Clientes</h2>
+  <section id="avaliacoes">
+    <h2 class="section-title-neon">Avaliações dos <span>Clientes</span></h2>
 
     <div class="feedback-form">
       <form id="feedbackForm">
+        <label for="feedbackNome" class="sr-only">Seu Nome</label>
         <input type="text" id="feedbackNome" placeholder="Seu Nome" required>
         <div class="rating">
-          <span>Nota:</span>
+          <span class="rating-label">Nota:</span>
           <input type="radio" id="star5" name="rating" value="5" required /><label for="star5" title="5 estrelas"><i
               class="fas fa-star"></i></label>
           <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 estrelas"><i
@@ -289,6 +312,7 @@
           <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 estrela"><i
               class="fas fa-star"></i></label>
         </div>
+        <label for="feedbackComentario" class="sr-only">Comentário</label>
         <textarea id="feedbackComentario" rows="3" placeholder="Sua sugestão, elogio ou reclamação..." required
           style="width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit;"></textarea>
         <button type="submit" style="background: #007BFF;">Enviar Avaliação</button>
@@ -299,6 +323,28 @@
       <!-- As avaliações aparecerão aqui -->
     </div>
   </section>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="img/logo.png" alt="Logo F1" class="footer-logo-img">
+        <p>Lava Rápido F1</p>
+      </div>
+      <div class="footer-info">
+        <p><i class="fas fa-map-marker-alt"></i> Rua das Pistas, 123 - Interlagos, SP</p>
+        <p><i class="fas fa-phone"></i> (11) 93777-5104</p>
+        <p><i class="fas fa-envelope"></i> contato@lavarapidof1.com.br</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/5511937775104" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Lava Rápido F1. Todos os direitos reservados.</p>
+    </div>
+  </footer>
 
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>

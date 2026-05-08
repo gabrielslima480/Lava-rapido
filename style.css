@@ -891,3 +891,111 @@ li {
     background-color: rgba(124, 77, 255, 0.1);
   }
 }
+
+/* Agendamentos List Section */
+.agendamentos-list {
+  background: #111;
+  padding: 60px 20px;
+}
+
+#listaAgendamentos {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+#listaAgendamentos li {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 15px;
+  border-left: 5px solid #007BFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  transition: transform 0.3s;
+}
+
+#listaAgendamentos li:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Styles */
+.main-footer {
+  background: #000;
+  color: white;
+  padding: 60px 20px 20px;
+  border-top: 2px solid #007BFF;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+.footer-logo-img {
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.footer-info p {
+  margin: 10px 0;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-info i {
+  color: #007BFF;
+  margin-right: 10px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social a {
+  color: white;
+  font-size: 1.5em;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover {
+  color: #007BFF;
+  transform: translateY(-5px);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Accessibility helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
