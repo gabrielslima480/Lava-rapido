@@ -110,116 +110,144 @@
 
 
 
-  <section id="fotos-servicos" style="clear: both; margin: 20px; padding-top: 20px;">
-    <h2 style="text-align: center;">Serviços</h2>
-    <div class="gallery-container">
-      <div class="gallery-item" data-servico="lavagem-simples">
-        <img src="img/lavagem_simples.png" alt="Lavagem Simples">
-        <h3>Lavagem Simples</h3>
-        <p class="service-description">Inclui a lavagem completa da lataria com shampoo neutro, limpeza externa dos
-          vidros e secagem cuidadosa para não riscar a pintura do seu veículo.</p>
-      </div>
-      <div class="gallery-item" data-servico="higienizacao-interna">
-        <img src="img/higienizacao_interna.png" alt="Higienização Interna">
-        <h3>Higienização Interna</h3>
-        <p class="service-description">Limpeza profunda dos bancos (tecido ou couro), teto, carpetes e painel. Removemos
-          manchas e ácaros, deixando um aroma agradável de carro novo.</p>
-      </div>
-      <div class="gallery-item" data-servico="polimento">
-        <img src="img/polimento_carro.png" alt="Polimento de Carro">
-        <h3>Polimento</h3>
-        <p class="service-description">Removemos micro-riscos, manchas superficiais e oxidação da pintura, devolvendo o
-          brilho intenso e protegendo a lataria do seu carro.</p>
-      </div>
-      <div class="gallery-item" data-servico="pretinho">
-        <img src="img/pretinho_pneu.png" alt="Pretinho no Pneu">
-        <h3>Pretinho nos Pneus</h3>
-        <p class="service-description">Aplicação de produto especial que limpa, hidrata e devolve o brilho de pneu novo,
-          além de criar uma camada protetora contra ressecamento.</p>
+  <section id="fotos-servicos">
+    <div class="servicos-overlay">
+      <h2>Serviços</h2>
+      <div class="servicos-banner-container">
+        <img src="Serviços/Serviços.png" alt="Nossos Serviços - Lava Rápido F1" class="servicos-banner">
+        <p class="servicos-info">Oferecemos lavagem detalhada, higienização, polimento e muito mais para o seu veículo.</p>
       </div>
     </div>
   </section>
 
-  <section id="tabela-precos" style="clear: both; margin: 20px; padding-top: 20px;">
-    <h2 style="text-align: center;">Tabela de Preços</h2>
-    <div class="columns">
-      <ul class="price">
-        <li class="header">Básico</li>
-        <li class="grey">R$ 50,00</li>
-        <li>Lavagem simples</li>
-        <li>Aspiração</li>
-        <li>Pretinho nos pneus</li>
-        <li>Cera líquida</li>
-        <li class="grey"><a href="#agendamento" class="button"
-            onclick="document.getElementById('servico').value='Pacote Básico'">Agendar</a></li>
-      </ul>
+  <section id="tabela-precos" class="glass-section">
+    <h2 class="section-title-neon">Tabela de <span>Preços</span></h2>
+    <div class="glass-container">
+      <div class="glass-card">
+        <i class="fas fa-car card-icon-float"></i>
+        <div class="card-header">
+          <h3>Básico</h3>
+          <p class="subtitle">Essencial para o dia a dia</p>
+        </div>
+        <div class="price-tag">R$ 50<span>,00</span></div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Lavagem simples</li>
+          <li><i class="fas fa-check-circle"></i> Aspiração</li>
+          <li><i class="fas fa-check-circle"></i> Pretinho nos pneus</li>
+          <li><i class="fas fa-check-circle"></i> Cera líquida</li>
+        </ul>
+        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Pacote Básico'">Agendar</a>
+      </div>
+
+      <div class="glass-card highlight">
+        <i class="fas fa-star card-icon-float"></i>
+        <div class="card-header">
+          <h3>Completo</h3>
+          <p class="subtitle">O equilíbrio perfeito</p>
+        </div>
+        <div class="price-tag">R$ 100<span>,00</span></div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Lavagem detalhada</li>
+          <li><i class="fas fa-check-circle"></i> Aspiração completa</li>
+          <li><i class="fas fa-check-circle"></i> Polimento</li>
+          <li><i class="fas fa-check-circle"></i> Higienização Interna</li>
+        </ul>
+        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Pacote Completo'">Agendar</a>
+      </div>
+
+      <div class="glass-card">
+        <i class="fas fa-crown card-icon-float"></i>
+        <div class="card-header">
+          <h3>PremiumF1</h3>
+          <p class="subtitle">O cuidado máximo</p>
+        </div>
+        <div class="price-tag">R$ 150<span>,00</span></div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Tudo do Completo</li>
+          <li><i class="fas fa-check-circle"></i> Cristalização de Vidros</li>
+          <li><i class="fas fa-check-circle"></i> Hidratação de Couro</li>
+          <li><i class="fas fa-check-circle"></i> Oxi-Sanitização</li>
+        </ul>
+        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Pacote PremiumF1'">Agendar</a>
+      </div>
     </div>
-    <div class="columns">
-      <ul class="price">
-        <li class="header" style="background-color:#4CAF50">Completo</li>
-        <li class="grey">R$ 100,00</li>
-        <li>Lavagem detalhada</li>
-        <li>Aspiração completa</li>
-        <li>Polimento</li>
-        <li>Higienização Interna</li>
-        <li class="grey"><a href="#agendamento" class="button"
-            onclick="document.getElementById('servico').value='Pacote Completo'">Agendar</a></li>
-      </ul>
+
+    <div class="benefit-badges">
+      <div class="benefit-item">
+        <i class="fas fa-truck-fast"></i>
+        <div class="benefit-text">
+          <h4>Levamos até você!</h4>
+          <p>Agende e nós vamos até você</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-shield-halved"></i>
+        <div class="benefit-text">
+          <h4>Qualidade Garantida</h4>
+          <p>Produtos de alta performance</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-leaf"></i>
+        <div class="benefit-text">
+          <h4>Sustentável</h4>
+          <p>Consumo consciente de água</p>
+        </div>
+      </div>
     </div>
-    <div class="columns">
-      <ul class="price">
-        <li class="header" style="background-color:#f44336">PremiumF1</li>
-        <li class="grey">R$ 150,00</li>
-        <li>Tudo do Completo</li>
-        <li>Cristalização de Vidros</li>
-        <li>Hidratação de Couro</li>
-        <li>Oxi-Sanitização</li>
-        <li class="grey"><a href="#agendamento" class="button"
-            onclick="document.getElementById('servico').value='Pacote PremiumF1'">Agendar</a></li>
-      </ul>
-    </div>
-    <div style="clear: both;"></div>
   </section>
 
-  <section id="planos-assinatura" style="clear: both; margin: 20px; padding-top: 20px;">
-    <h2 style="text-align: center;">Planos de Assinatura</h2>
-    <div class="columns">
-      <ul class="price">
-        <li class="header" style="background-color:#333">3 Meses</li>
-        <li class="grey">R$ 55,00 /mês</li>
-        <li>Lavagem Básico Mensal</li>
-        <li>Avisos por e-mail</li>
-        <li>Prioridade no Agendamento</li>
-        <li>Renovação Fácil</li>
-        <li class="grey"><a href="#agendamento" class="button"
-            onclick="document.getElementById('servico').value='Plano 3 Meses'">Assinar</a></li>
-      </ul>
+  <section id="planos-assinatura" class="glass-section" style="border-top: 1px solid rgba(255,255,255,0.05);">
+    <h2 class="section-title-neon">Planos de <span>Assinatura</span></h2>
+    <div class="glass-container">
+      <div class="glass-card">
+        <i class="fas fa-calendar-alt card-icon-float"></i>
+        <div class="card-header">
+          <h3>3 Meses</h3>
+          <p class="subtitle">Para quem cuida sempre</p>
+        </div>
+        <div class="price-tag">R$ 55<span>/mês</span></div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Lavagem Básico Mensal</li>
+          <li><i class="fas fa-check-circle"></i> Avisos por e-mail</li>
+          <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
+          <li><i class="fas fa-check-circle"></i> Renovação Fácil</li>
+        </ul>
+        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Plano 3 Meses'">Assinar</a>
+      </div>
+
+      <div class="glass-card highlight">
+        <i class="fas fa-gem card-icon-float"></i>
+        <div class="card-header">
+          <h3>5 Meses</h3>
+          <p class="subtitle">Melhor custo-benefício</p>
+        </div>
+        <div class="price-tag">R$ 85<span>/mês</span></div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Lavagem Completo Mensal</li>
+          <li><i class="fas fa-check-circle"></i> Avisos por e-mail</li>
+          <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
+          <li><i class="fas fa-check-circle"></i> Renovação Fácil</li>
+        </ul>
+        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Plano 5 Meses'">Assinar</a>
+      </div>
+
+      <div class="glass-card">
+        <i class="fas fa-award card-icon-float"></i>
+        <div class="card-header">
+          <h3>1 Ano</h3>
+          <p class="subtitle">Experiência Ultimate</p>
+        </div>
+        <div class="price-tag">R$ 195<span>/mês</span></div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Lavagem PremiumF1 Mensal</li>
+          <li><i class="fas fa-check-circle"></i> Avisos por e-mail</li>
+          <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
+          <li><i class="fas fa-check-circle"></i> Brindes Exclusivos</li>
+        </ul>
+        <a href="#agendamento" class="btn-glass" onclick="document.getElementById('servico').value='Plano 1 Ano'">Assinar</a>
+      </div>
     </div>
-    <div class="columns">
-      <ul class="price">
-        <li class="header" style="background-color:#2196F3">5 Meses</li>
-        <li class="grey">R$ 85,00 /mês</li>
-        <li>Lavagem Completo Mensal</li>
-        <li>Avisos por e-mail</li>
-        <li>Prioridade no Agendamento</li>
-        <li>Renovação Fácil</li>
-        <li class="grey"><a href="#agendamento" class="button"
-            onclick="document.getElementById('servico').value='Plano 5 Meses'">Assinar</a></li>
-      </ul>
-    </div>
-    <div class="columns">
-      <ul class="price">
-        <li class="header" style="background-color:#dc0909cc">1 Ano</li>
-        <li class="grey">R$ 195,00 /mês</li>
-        <li>Lavagem PremiumF1 Mensal</li>
-        <li>Avisos por e-mail</li>
-        <li>Prioridade no Agendamento</li>
-        <li>Brindes Exclusivos</li>
-        <li class="grey"><a href="#agendamento" class="button"
-            onclick="document.getElementById('servico').value='Plano 1 Ano'">Assinar</a></li>
-      </ul>
-    </div>
-    <div style="clear: both;"></div>
   </section>
   <section id="sobre" class="lista">
     <div class="sobre-container">
@@ -231,6 +259,11 @@
         <h3>Nossa Equipe</h3>
         <p>Contamos com profissionais treinados e dedicados, especialistas em estética automotiva, que utilizam apenas
           produtos de alta performance para garantir a proteção e conservação da pintura e do interior do seu carro.</p>
+        
+        <div class="equipe-principal">
+          <img src="Equipe/Equipe F1.png" alt="Equipe Lava Rápido F1" class="foto-equipe-f1">
+          <p class="legenda-equipe">Nossa equipe de especialistas pronta para cuidar do seu veículo.</p>
+        </div>
       </div>
     </div>
   </section>

@@ -118,7 +118,7 @@ header {
 .social-link.email:hover { color: #FFD700; }
 
 .agendamento-section {
-  background-image: url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Fallback image */
+  background-image: url('img/Fundo.png'); /* Caminho corrigido para a imagem local */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -130,10 +130,7 @@ header {
   margin: 40px 0;
 }
 
-/* Please save the user provided image as img/agendamento_bg.jpg to use it */
-.agendamento-section[style*="agendamento_bg"] {
-  background-image: url('img/agendamento_bg.jpg');
-}
+
 
 .agendamento-overlay {
   background: rgba(0, 0, 0, 0.5);
@@ -348,6 +345,33 @@ header {
   color: #0056b3;
 }
 
+.equipe-principal {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.foto-equipe-f1 {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 15px;
+  border: 5px solid #007BFF;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.foto-equipe-f1:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.legenda-equipe {
+  margin-top: 15px;
+  font-style: italic;
+  color: #555;
+  font-size: 1.1em;
+}
+
 input, select, button {
   display: block;
   width: 100%;
@@ -437,50 +461,47 @@ li {
   font-size: 18px;
 }
 
-/* Galeria de Fotos */
-.gallery-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 10px;
+#fotos-servicos {
+  background-image: url('Serviços/Fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 40px 0;
+  padding: 0;
+  clear: both;
 }
 
-.gallery-item {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  width: 30%;
-  min-width: 250px;
-  transition: transform 0.3s;
-  cursor: pointer;
-}
-
-.gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-.gallery-item img {
+.servicos-overlay {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 60px 20px;
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
 }
 
-.gallery-item h3 {
-  margin: 15px 0 10px 0;
-  color: #333;
-}
-
-.service-description {
-  margin: 0 15px 20px 15px;
-  font-size: 0.95em;
-  color: #555;
+.servicos-overlay h2 {
   text-align: center;
-  line-height: 1.4;
+  margin-bottom: 30px;
+  color: #007BFF;
+}
+
+/* Galeria de Fotos */
+
+.servicos-banner {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 3px solid #007BFF;
+}
+
+.servicos-info {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #444;
+  font-weight: 500;
+  text-align: center;
 }
 
 /* Change the width of the three columns to 100%
@@ -565,5 +586,236 @@ li {
   }
   .feedback-container {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Glassmorphism & Redesign Tabela de Preços e Assinaturas */
+
+.glass-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('img/Fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 80px 20px;
+  color: white;
+}
+
+.section-title-neon {
+  text-align: center;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 50px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 123, 255, 0.8), 0 0 20px rgba(0, 123, 255, 0.4);
+}
+
+.section-title-neon span {
+  color: #007BFF;
+  font-weight: 300;
+}
+
+.glass-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 40px 30px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 380px;
+  transition: transform 0.4s, box-shadow 0.4s;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 123, 255, 0.2);
+  border-color: rgba(0, 123, 255, 0.4);
+}
+
+.glass-card.highlight {
+  border: 1px solid rgba(124, 77, 255, 0.5);
+  box-shadow: 0 0 30px rgba(124, 77, 255, 0.2);
+}
+
+.glass-card.highlight::before {
+  content: "MAIS ESCOLHIDO";
+  position: absolute;
+  top: 20px;
+  right: -35px;
+  background: #7c4dff;
+  color: white;
+  padding: 5px 40px;
+  font-size: 0.7em;
+  font-weight: bold;
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px rgba(124, 77, 255, 0.5);
+}
+
+.card-header {
+  text-align: left;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+}
+
+.card-header h3 {
+  font-size: 1.8em;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-header .subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.price-tag {
+  font-size: 2.2em;
+  font-weight: bold;
+  margin: 20px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.price-tag span {
+  font-size: 0.4em;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: normal;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  flex-grow: 1;
+}
+
+.feature-list li {
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.95em;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-list li i {
+  color: #007BFF;
+  font-size: 1.1em;
+}
+
+.card-icon-float {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 2.5em;
+  opacity: 0.2;
+  color: #007BFF;
+  transition: opacity 0.3s;
+}
+
+.glass-card:hover .card-icon-float {
+  opacity: 0.6;
+}
+
+.glass-card.highlight .card-icon-float {
+  color: #7c4dff;
+}
+
+.btn-glass {
+  background: #007BFF;
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-glass:hover {
+  background: #0056b3;
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+}
+
+.glass-card.highlight .btn-glass {
+  background: #7c4dff;
+  box-shadow: 0 4px 15px rgba(124, 77, 255, 0.3);
+}
+
+.glass-card.highlight .btn-glass:hover {
+  background: #6200ea;
+  box-shadow: 0 6px 20px rgba(124, 77, 255, 0.5);
+}
+
+/* Badges de Benefícios (Rodapé das seções) */
+.benefit-badges {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 40px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.benefit-item i {
+  font-size: 2em;
+  color: #007BFF;
+}
+
+.benefit-text h4 {
+  margin: 0;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.benefit-text p {
+  margin: 5px 0 0 0;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .glass-container {
+    padding: 0 10px;
+  }
+  .benefit-badges {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
   }
 }
