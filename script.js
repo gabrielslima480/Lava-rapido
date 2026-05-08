@@ -190,4 +190,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mainLogo) mainLogo.addEventListener('click', scrollToTop);
     if (logoContainer) logoContainer.addEventListener('click', scrollToTop);
     if (navHome) navHome.addEventListener('click', scrollToTop);
+
+    // --- LÓGICA DO CURSOR CUSTOMIZADO ---
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    if (cursorDot && cursorOutline) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // O ponto segue instantaneamente
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // O contorno segue com uma animação suave via CSS transition
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
+        });
+
+        // Adiciona classe de hover para elementos interativos
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .glass-card, .gallery-item, #logo-container, #main-logo, .social-link');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('cursor-hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('cursor-hover');
+            });
+        });
+    }
 });
