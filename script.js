@@ -196,17 +196,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorOutline = document.querySelector('.cursor-outline');
 
     if (cursorDot && cursorOutline) {
+        let prevX = 0;
+        let prevY = 0;
+        let angle = 0;
+
         window.addEventListener('mousemove', (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
 
-            // O ponto segue instantaneamente
+            // Calcula o ângulo de rotação baseado no movimento
+            const dx = posX - prevX;
+            const dy = posY - prevY;
+            
+            // Só atualiza o ângulo se houver movimento significativo para evitar trepidação
+            if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+                angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90; // +90 porque o SVG aponta para cima
+            }
+
+            // O carro (ponto) segue e rotaciona
             cursorDot.style.left = `${posX}px`;
             cursorDot.style.top = `${posY}px`;
+            cursorDot.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
 
-            // O contorno segue com uma animação suave via CSS transition
+            // O contorno segue com suavidade
             cursorOutline.style.left = `${posX}px`;
             cursorOutline.style.top = `${posY}px`;
+
+            prevX = posX;
+            prevY = posY;
         });
 
         // Adiciona classe de hover para elementos interativos
