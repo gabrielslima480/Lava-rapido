@@ -68,19 +68,20 @@ header {
 
 .main-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 15px;
-  padding-top: 10px;
+  padding: 15px 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 30px;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-links a {
@@ -94,6 +95,12 @@ header {
 .nav-links a:hover {
   color: #FFD700;
   transform: translateY(-2px);
+}
+
+.nav-links a i {
+  margin-right: 8px;
+  font-size: 0.9em;
+  color: #FFD700;
 }
 
 .social-icons {
