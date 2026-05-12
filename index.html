@@ -115,9 +115,22 @@
   </section>
 
   <section id="lista-agendamentos-section" class="agendamentos-list">
-    <h2 class="section-title-neon">Meus <span>Agendamentos</span></h2>
-    <div class="glass-container">
-      <ul id="listaAgendamentos"></ul>
+    <h2 class="section-title-neon">Solicitações de <span>Agendamento</span></h2>
+    <div class="glass-container table-responsive">
+      <table class="agendamento-table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Serviço/Plano</th>
+            <th>Data/Hora</th>
+            <th>Status</th>
+            <th>Código</th>
+          </tr>
+        </thead>
+        <tbody id="listaAgendamentos">
+          <!-- Agendamentos aparecerão aqui -->
+        </tbody>
+      </table>
     </div>
   </section>
 
@@ -230,8 +243,8 @@
           <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
           <li><i class="fas fa-check-circle"></i> Renovação Fácil</li>
         </ul>
-        <a href="#agendamento" class="btn-glass"
-          onclick="document.getElementById('servico').value='Plano 3 Meses'">Assinar</a>
+        <button class="btn-glass"
+          onclick="abrirModalAssinatura('Plano 3 Meses', 55)">Assinar</button>
       </div>
 
       <div class="glass-card highlight">
@@ -247,8 +260,8 @@
           <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
           <li><i class="fas fa-check-circle"></i> Renovação Fácil</li>
         </ul>
-        <a href="#agendamento" class="btn-glass"
-          onclick="document.getElementById('servico').value='Plano 5 Meses'">Assinar</a>
+        <button class="btn-glass"
+          onclick="abrirModalAssinatura('Plano 5 Meses', 85)">Assinar</button>
       </div>
 
       <div class="glass-card">
@@ -264,8 +277,8 @@
           <li><i class="fas fa-check-circle"></i> Prioridade no Agendamento</li>
           <li><i class="fas fa-check-circle"></i> Brindes Exclusivos</li>
         </ul>
-        <a href="#agendamento" class="btn-glass"
-          onclick="document.getElementById('servico').value='Plano 1 Ano'">Assinar</a>
+        <button class="btn-glass"
+          onclick="abrirModalAssinatura('Plano 1 Ano', 195)">Assinar</button>
       </div>
     </div>
   </section>
@@ -331,7 +344,7 @@
         <p>Lava Rápido F1</p>
       </div>
       <div class="footer-info">
-        <p><i class="fas fa-map-marker-alt"></i> Rua das Pistas, 123 - Interlagos, SP</p>
+        <p><i class="fas fa-map-marker-alt"></i> Av. Marechal Tito 250 - São Miguel Paulista, SP</p>
         <p><i class="fas fa-phone"></i> (11) 93777-5104</p>
         <p><i class="fas fa-envelope"></i> contato@lavarapidof1.com.br</p>
       </div>
@@ -348,6 +361,46 @@
 
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
+
+  <!-- Modal de Pagamento -->
+  <div id="modalPagamento" class="modal">
+    <div class="modal-content glassmorphism">
+      <span class="close-modal" onclick="fecharModal()">&times;</span>
+      <h2 class="section-title-neon">Concluir <span>Assinatura</span></h2>
+      <p id="modal-plano-info">Você selecionou o <strong>Plano 3 Meses</strong></p>
+      
+      <form id="formPagamento">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="pay-nome" placeholder="Nome no Cartão" required>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-credit-card"></i>
+          <input type="text" id="pay-card" placeholder="0000 0000 0000 0000" required>
+        </div>
+        <div class="row">
+          <div class="input-group">
+            <i class="fas fa-calendar-day"></i>
+            <input type="text" id="pay-expiry" placeholder="MM/AA" required>
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="text" id="pay-cvv" placeholder="CVV" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="pay-email" placeholder="E-mail para confirmação" required>
+        </div>
+        <div class="input-group">
+          <i class="fab fa-whatsapp"></i>
+          <input type="tel" id="pay-whatsapp" placeholder="WhatsApp (DDD + Número)" required>
+        </div>
+        
+        <button type="submit" class="btn-agendar">Finalizar e Pagar <i class="fas fa-check-circle"></i></button>
+      </form>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

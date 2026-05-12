@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const enderecoContainer = document.getElementById('endereco-container');
     const enderecoInput = document.getElementById('endereco');
 
+    // Função simples para evitar XSS
+    const escapeHTML = (str) => String(str).replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[m]);
+
     if (deliveryCheckbox && enderecoContainer) {
         deliveryCheckbox.addEventListener('change', () => {
             if (deliveryCheckbox.checked) {
@@ -30,79 +35,95 @@ document.addEventListener('DOMContentLoaded', () => {
         const endereco = document.getElementById('endereco').value;
         const comentarios = document.getElementById('comentarios') ? document.getElementById('comentarios').value : "";
 
-        // Lógica de planos de assinatura
-        let avisoAssinaturaHTML = "";
-        let avisoAlertaTXT = "";
-
-        if (servico.startsWith('Plano')) {
-            let meses = 0;
-            if (servico.includes('3 Meses')) meses = 3;
-            else if (servico.includes('5 Meses')) meses = 5;
-            else if (servico.includes('1 Ano')) meses = 12;
-
-            const [ano, mes, dia] = data.split('-');
-            const dataInicio = new Date(ano, mes - 1, dia);
-            
-            const dataFim = new Date(dataInicio);
-            dataFim.setMonth(dataFim.getMonth() + meses);
-
-            const dataAviso = new Date(dataFim);
-            dataAviso.setDate(dataAviso.getDate() - 3);
-
-            const dataFimFormatada = dataFim.toLocaleDateString('pt-BR');
-            const dataAvisoFormatada = dataAviso.toLocaleDateString('pt-BR');
-
-            avisoAssinaturaHTML = `<br><span style="color: #28a745;"><strong>Assinatura Válida até:</strong> ${dataFimFormatada}</span><br>
-            <span style="color: #FF9800;">Lembrete de renovação agendado para o e-mail <strong>${email}</strong> no dia ${dataAvisoFormatada} (3 dias antes do término).</span>`;
-
-            avisoAlertaTXT = `\n\nComo você contratou um ${servico}, um e-mail de aviso será enviado para ${email} no dia ${dataAvisoFormatada}, que é 3 dias antes do seu plano terminar (${dataFimFormatada}).`;
-        }
-
         // Gera um código de agendamento aleatório (Ex: F1-A3B9C)
         const codigoAgendamento = 'F1-' + Math.random().toString(36).substring(2, 7).toUpperCase();
 
-        // Função simples para evitar XSS
-        const escapeHTML = (str) => String(str).replace(/[&<>"']/g, m => ({
-            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-        })[m]);
-
-        const safeNome = escapeHTML(nome);
-        const safeServico = escapeHTML(servico);
-        const safeData = escapeHTML(data);
-        const safeHora = escapeHTML(hora);
-        const safeTelefone = escapeHTML(telefone);
-        const safeEmail = escapeHTML(email);
-        const safeEndereco = escapeHTML(endereco);
-        const safeComentarios = escapeHTML(comentarios);
-
-        // Formatação do item de agendamento
-        const li = document.createElement('li');
-        let texto = `<strong>${safeNome}</strong> - ${safeServico} em ${safeData} às ${safeHora} (Tel: ${safeTelefone}) <br>E-mail: ${safeEmail} <br><span style="color: #007BFF; font-weight: bold;">Código de Confirmação: ${codigoAgendamento}</span>`;
+        // Adiciona à tabela
+        adicionarLinhaTabela(nome, servico, `${data} ${hora}`, 'Confirmado', codigoAgendamento);
         
-        if (delivery) {
-            texto += ` <br><em>Delivery para: ${safeEndereco || 'Endereço não informado'}</em>`;
-        }
+        // Exibe um alerta de sucesso
+        alert(`Agendamento de ${servico} realizado com sucesso!\n\nSeu código de confirmação é: ${codigoAgendamento}`);
         
-        if (comentarios.trim() !== "") {
-            texto += ` <br><span style="color: #666; font-style: italic;"><strong>Observações:</strong> ${safeComentarios}</span>`;
-        }
-        
-        texto += avisoAssinaturaHTML;
-        
-        li.innerHTML = texto;
-        
-        // Exibe um alerta de sucesso com o código para o cliente
-        alert(`Agendamento de ${servico} realizado com sucesso!\n\nSeu código de confirmação é: ${codigoAgendamento}\n\nGuarde este código para acompanhar o seu serviço.${avisoAlertaTXT}`);
-        
-        // Adiciona à lista
-        lista.appendChild(li);
-        
-        // Limpa o formulário
+        // Limpa o formulário e rola até a tabela
         form.reset();
-        
-        // Rola até a lista
-        lista.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('lista-agendamentos-section').scrollIntoView({ behavior: 'smooth' });
     });
+
+    // Função para adicionar linha na tabela
+    function adicionarLinhaTabela(nome, servico, dataHora, status, codigo) {
+        const tr = document.createElement('tr');
+        
+        const statusClass = status === 'Confirmado' ? 'status-confirmado' : 'status-pendente';
+        
+        tr.innerHTML = `
+            <td><strong>${escapeHTML(nome)}</strong></td>
+            <td>${escapeHTML(servico)}</td>
+            <td>${escapeHTML(dataHora)}</td>
+            <td><span class="status-badge ${statusClass}">${status}</span></td>
+            <td><span class="codigo-tag">${escapeHTML(codigo)}</span></td>
+        `;
+        
+        lista.appendChild(tr);
+    }
+
+    // --- LÓGICA DO MODAL DE PAGAMENTO ---
+    const modal = document.getElementById('modalPagamento');
+    const formPagamento = document.getElementById('formPagamento');
+    let planoSelecionado = '';
+
+    window.abrirModalAssinatura = function(plano, preco) {
+        planoSelecionado = plano;
+        document.getElementById('modal-plano-info').innerHTML = `Você selecionou o <strong>${plano}</strong> - R$ ${preco},00/mês`;
+        modal.style.display = 'block';
+    };
+
+    window.fecharModal = function() {
+        modal.style.display = 'none';
+    };
+
+    // Fecha o modal ao clicar fora dele
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            fecharModal();
+        }
+    };
+
+    if (formPagamento) {
+        formPagamento.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const nome = document.getElementById('pay-nome').value;
+            const email = document.getElementById('pay-email').value;
+            const whatsapp = document.getElementById('pay-whatsapp').value;
+            
+            // Simulação de processamento
+            const codigoAssinatura = 'SUB-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+            
+            // Notificações
+            enviarNotificacoes(nome, planoSelecionado, email, whatsapp, codigoAssinatura);
+            
+            // Adiciona na tabela de agendamentos/solicitações
+            adicionarLinhaTabela(nome, `Assinatura: ${planoSelecionado}`, 'Processamento Mensal', 'Confirmado', codigoAssinatura);
+            
+            alert(`Pagamento processado com sucesso!\n\nSua assinatura do ${planoSelecionado} está ativa.\nCódigo: ${codigoAssinatura}\n\nEnviamos os detalhes para seu e-mail e WhatsApp.`);
+            
+            fecharModal();
+            formPagamento.reset();
+            document.getElementById('lista-agendamentos-section').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    function enviarNotificacoes(nome, plano, email, whatsapp, codigo) {
+        // Simulação de E-mail
+        console.log(`[SIMULAÇÃO E-MAIL] Para: ${email}\nAssunto: Confirmação de Assinatura F1\nOlá ${nome}, seu ${plano} foi ativado com o código ${codigo}.`);
+        
+        // WhatsApp link
+        const mensagem = encodeURIComponent(`Olá! Acabei de assinar o ${plano} no Lava Rápido F1. Meu código é: ${codigo}. Nome: ${nome}`);
+        const waLink = `https://wa.me/55${whatsapp.replace(/\D/g, '')}?text=${mensagem}`;
+        
+        // Abre o WhatsApp em uma nova aba
+        window.open(waLink, '_blank');
+    }
 
     // --- LÓGICA DE AVALIAÇÕES ---
     const feedbackForm = document.getElementById('feedbackForm');

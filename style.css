@@ -999,3 +999,121 @@ li {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Modal de Pagamento */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  padding-top: 50px;
+}
+
+.modal-content {
+  margin: 5% auto;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: modalFadeIn 0.4s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close-modal {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-modal:hover {
+  color: #007BFF;
+}
+
+#modal-plano-info {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #aaa;
+  font-size: 1.1em;
+}
+
+/* Tabela de Agendamentos */
+.agendamentos-list {
+  background: #0a0a0a;
+  padding: 80px 20px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 30px;
+}
+
+.agendamento-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.agendamento-table th {
+  background: rgba(0, 123, 255, 0.2);
+  padding: 15px;
+  text-align: left;
+  border-bottom: 2px solid #007BFF;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+
+.agendamento-table td {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 1em;
+}
+
+.agendamento-table tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-confirmado {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+  border: 1px solid #28a745;
+}
+
+.status-pendente {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border: 1px solid #ffc107;
+}
+
+.codigo-tag {
+  font-family: monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #007BFF;
+}
