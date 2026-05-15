@@ -1,0 +1,15 @@
+[
+    {
+        "data_registro": "15\/05\/2026 14:35",
+        "nome": "Juliana Costa",
+        "telefone": "(11) 94444-4444",
+        "email": "juliana.cliente@gmail.com",
+        "servico": "Pacote Completo",
+        "data_agendamento": "52026-02-20",
+        "hora": "10:00",
+        "delivery": "Sim",
+        "endereco": "Rua das Flores, 123",
+        "mensagem": "",
+        "status": "Pendente"
+    }
+]

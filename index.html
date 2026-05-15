@@ -13,6 +13,15 @@
 
 <body>
 
+  <!-- Preloader Temático F1 -->
+  <div id="preloader">
+    <div class="loader-content">
+      <i class="fas fa-car-side racing-car"></i>
+      <div class="loader-bar"></div>
+      <p>Aquecendo os motores...</p>
+    </div>
+  </div>
+
   <header>
     <div class="header-content">
       <div id="logo-container" style="cursor: pointer;">
@@ -31,6 +40,7 @@
         <a href="#fotos-servicos"><i class="fas fa-concierge-bell"></i> Serviços</a>
         <a href="#tabela-precos"><i class="fas fa-tags"></i> Tabela de Preços</a>
         <a href="#planos-assinatura"><i class="fas fa-id-card"></i> Planos de Assinatura</a>
+        <a href="javascript:void(0)" onclick="abrirModalContato()"><i class="fas fa-envelope"></i> Contato</a>
       </div>
       <div class="social-icons">
         <a href="https://wa.me/5511937775104" class="social-link whatsapp" title="WhatsApp"><i
@@ -346,7 +356,7 @@
       <div class="footer-info">
         <p><i class="fas fa-map-marker-alt"></i> Av. Marechal Tito 250 - São Miguel Paulista, SP</p>
         <p><i class="fas fa-phone"></i> (11) 93777-5104</p>
-        <p><i class="fas fa-envelope"></i> contato@lavarapidof1.com.br</p>
+        <p><i class="fas fa-envelope"></i> gabrielslima480@gmail.com</p>
       </div>
       <div class="footer-social">
         <a href="https://wa.me/5511937775104" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -355,7 +365,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Lava Rápido F1. Todos os direitos reservados.</p>
+      <p>&copy; 2026 Lava Rápido F1. Todos os direitos reservados. | <a href="PHPMailer/painel_contatos.php" style="color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.8em;"><i class="fas fa-lock"></i> Admin</a></p>
     </div>
   </footer>
 
@@ -400,6 +410,86 @@
         <button type="submit" class="btn-agendar">Finalizar e Pagar <i class="fas fa-check-circle"></i></button>
       </form>
     </div>
+  </div>
+
+  <!-- Modal de Contato -->
+  <div id="modalContato" class="modal">
+    <div class="modal-content glassmorphism wide">
+      <span class="close-modal" onclick="fecharModalContato()">&times;</span>
+      <h2 class="section-title-neon" style="margin-bottom: 20px;">Fale <span>Conosco</span></h2>
+      
+      <div class="modal-grid">
+        <!-- Coluna de Informações -->
+        <div class="modal-info">
+          <div class="modal-info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Endereço</h4>
+              <p>Av. Marechal Tito 250<br>São Miguel Paulista, SP</p>
+            </div>
+          </div>
+          <div class="modal-info-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <h4>Telefone / WhatsApp</h4>
+              <p>(11) 93777-5104</p>
+            </div>
+          </div>
+          <div class="modal-info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>E-mail</h4>
+              <p>gabrielslima480@gmail.com</p>
+            </div>
+          </div>
+          <div class="modal-info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Horário</h4>
+              <p>Seg a Sáb: 08h às 18h</p>
+            </div>
+          </div>
+          <div style="margin-top: 10px;">
+            <p style="color: #007BFF; font-weight: bold; margin-bottom: 10px;">Siga-nos:</p>
+            <div class="social-icons" style="justify-content: flex-start; border-top: none; margin-top: 0; padding-top: 0;">
+              <a href="https://wa.me/5511937775104" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-link facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna do Formulário -->
+        <div class="modal-form">
+          <form id="formContatoModal">
+            <div class="input-group">
+              <i class="fas fa-user"></i>
+              <input type="text" id="contato-nome" placeholder="Seu nome" required>
+            </div>
+            <div class="input-group">
+              <i class="fas fa-phone"></i>
+              <input type="tel" id="contato-tel" placeholder="Seu WhatsApp" required>
+            </div>
+            <div class="input-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="contato-email" placeholder="Seu e-mail" required>
+            </div>
+            <div class="input-group">
+              <i class="fas fa-comment-alt"></i>
+              <textarea id="contato-msg" rows="4" placeholder="Como podemos ajudar?" required></textarea>
+            </div>
+            <button type="submit" class="btn-agendar" id="btn-enviar-contato">
+              Enviar Mensagem <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão Voltar ao Topo -->
+  <div id="back-to-top" title="Voltar ao Topo">
+    <i class="fas fa-chevron-up"></i>
   </div>
 
   <script src="script.js"></script>

@@ -25,28 +25,51 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const nome = document.getElementById('nome').value;
-        const telefone = document.getElementById('telefone').value;
-        const email = document.getElementById('email').value;
-        const servico = document.getElementById('servico').value;
-        const data = document.getElementById('data').value;
-        const hora = document.getElementById('hora').value;
-        const delivery = document.getElementById('delivery').checked;
-        const endereco = document.getElementById('endereco').value;
-        const comentarios = document.getElementById('comentarios') ? document.getElementById('comentarios').value : "";
+        const btn = form.querySelector('button[type="submit"]');
+        const data = {
+            nome: document.getElementById('nome').value,
+            telefone: document.getElementById('telefone').value,
+            email: document.getElementById('email').value,
+            servico: document.getElementById('servico').value,
+            data: document.getElementById('data').value,
+            hora: document.getElementById('hora').value,
+            delivery: document.getElementById('delivery').checked,
+            endereco: document.getElementById('endereco').value,
+            mensagem: document.getElementById('mensagem') ? document.getElementById('mensagem').value : ""
+        };
 
-        // Gera um código de agendamento aleatório (Ex: F1-A3B9C)
-        const codigoAgendamento = 'F1-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+        btn.disabled = true;
+        btn.innerHTML = 'Solicitando... <i class="fas fa-spinner fa-spin"></i>';
 
-        // Adiciona à tabela
-        adicionarLinhaTabela(nome, servico, `${data} ${hora}`, 'Confirmado', codigoAgendamento);
-        
-        // Exibe um alerta de sucesso
-        alert(`Agendamento de ${servico} realizado com sucesso!\n\nSeu código de confirmação é: ${codigoAgendamento}`);
-        
-        // Limpa o formulário e rola até a tabela
-        form.reset();
-        document.getElementById('lista-agendamentos-section').scrollIntoView({ behavior: 'smooth' });
+        fetch('PHPMailer/agendar_servico.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(res => {
+            if (res.status === 'success') {
+                alert(res.message);
+                
+                const codigoAgendamento = 'F1-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+                adicionarLinhaTabela(data.nome, data.servico, `${data.data} ${data.hora}`, 'Pendente', codigoAgendamento);
+                
+                form.reset();
+                if (enderecoContainer) enderecoContainer.style.display = 'none';
+                document.getElementById('lista-agendamentos-section').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                throw new Error(res.message || 'Erro ao agendar.');
+            }
+        })
+        .catch(err => {
+            alert('Erro: ' + err.message);
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerHTML = 'Solicitar Agendamento <i class="fas fa-calendar-check"></i>';
+        });
     });
 
     // Função para adicionar linha na tabela
@@ -86,6 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target == modal) {
             fecharModal();
         }
+        if (event.target == document.getElementById('modalContato')) {
+            fecharModalContato();
+        }
     };
 
     if (formPagamento) {
@@ -110,6 +136,61 @@ document.addEventListener('DOMContentLoaded', () => {
             fecharModal();
             formPagamento.reset();
             document.getElementById('lista-agendamentos-section').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // --- LÓGICA DO MODAL DE CONTATO ---
+    const modalContato = document.getElementById('modalContato');
+    const formContatoModal = document.getElementById('formContatoModal');
+
+    window.abrirModalContato = function() {
+        modalContato.style.display = 'block';
+    };
+
+    window.fecharModalContato = function() {
+        modalContato.style.display = 'none';
+    };
+
+    if (formContatoModal) {
+        formContatoModal.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('btn-enviar-contato');
+            const data = {
+                nome: document.getElementById('contato-nome').value,
+                telefone: document.getElementById('contato-tel').value,
+                email: document.getElementById('contato-email').value,
+                mensagem: document.getElementById('contato-msg').value,
+                assunto: 'Contato via Modal'
+            };
+
+            btn.disabled = true;
+            btn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
+
+            fetch('PHPMailer/enviar_email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(res => {
+                if (res.status === 'success') {
+                    alert('Mensagem enviada com sucesso!');
+                    formContatoModal.reset();
+                    fecharModalContato();
+                } else {
+                    throw new Error(res.message || 'Erro ao enviar.');
+                }
+            })
+            .catch(err => {
+                alert('Erro ao enviar: ' + err.message);
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = 'Enviar Mensagem <i class="fas fa-paper-plane"></i>';
+            });
         });
     }
 
@@ -259,4 +340,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // --- LÓGICA DE CARREGAMENTO E SCROLL ---
+    const preloader = document.getElementById('preloader');
+    const backToTop = document.getElementById('back-to-top');
+
+    // Oculta o preloader quando tudo estiver carregado
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+        }, 800); // Pequeno delay para a animação ser vista
+    });
+
+    // Controla o botão voltar ao topo
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
