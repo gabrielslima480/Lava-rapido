@@ -22,6 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Função para carregar agendamentos do localStorage
+    const carregarAgendamentos = () => {
+        const agendamentos = JSON.parse(localStorage.getItem('agendamentosF1')) || [];
+        lista.innerHTML = '';
+        agendamentos.forEach(ag => {
+            adicionarLinhaTabela(ag.nome, ag.servico, `${ag.data} ${ag.hora}`, ag.status || 'Pendente', ag.codigo);
+        });
+    };
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -35,41 +44,52 @@ document.addEventListener('DOMContentLoaded', () => {
             hora: document.getElementById('hora').value,
             delivery: document.getElementById('delivery').checked,
             endereco: document.getElementById('endereco').value,
-            mensagem: document.getElementById('mensagem') ? document.getElementById('mensagem').value : ""
+            comentarios: document.getElementById('comentarios') ? document.getElementById('comentarios').value : ""
         };
 
         btn.disabled = true;
         btn.innerHTML = 'Solicitando... <i class="fas fa-spinner fa-spin"></i>';
 
-        fetch('PHPMailer/agendar_servico.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(res => {
-            if (res.status === 'success') {
-                alert(res.message);
-                
-                const codigoAgendamento = 'F1-' + Math.random().toString(36).substring(2, 7).toUpperCase();
-                adicionarLinhaTabela(data.nome, data.servico, `${data.data} ${data.hora}`, 'Pendente', codigoAgendamento);
-                
-                form.reset();
-                if (enderecoContainer) enderecoContainer.style.display = 'none';
-                document.getElementById('lista-agendamentos-section').scrollIntoView({ behavior: 'smooth' });
-            } else {
-                throw new Error(res.message || 'Erro ao agendar.');
-            }
-        })
-        .catch(err => {
-            alert('Erro: ' + err.message);
-        })
-        .finally(() => {
+        // Simulação de processamento 100% em JavaScript (Substituindo o PHP)
+        setTimeout(() => {
+            const codigoAgendamento = 'F1-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+            
+            const novoAgendamento = {
+                nome: data.nome,
+                telefone: data.telefone,
+                email: data.email,
+                servico: data.servico,
+                data: data.data,
+                hora: data.hora,
+                delivery: data.delivery,
+                endereco: data.endereco,
+                comentarios: data.comentarios,
+                codigo: codigoAgendamento,
+                status: 'Pendente'
+            };
+
+            // Salva no localStorage para persistência
+            const agendamentos = JSON.parse(localStorage.getItem('agendamentosF1')) || [];
+            agendamentos.unshift(novoAgendamento);
+            localStorage.setItem('agendamentosF1', JSON.stringify(agendamentos));
+
+            // Atualiza a tabela com o novo agendamento
+            carregarAgendamentos();
+
+            alert(`Agendamento solicitado com sucesso!\n\nCódigo: ${codigoAgendamento}\n\nEntraremos em contato via WhatsApp/E-mail para confirmar seu horário.`);
+
+            // Abre redirecionamento direto para o WhatsApp com os dados do agendamento prontos
+            const textMsg = encodeURIComponent(`Olá! Gostaria de confirmar meu agendamento no Lava Rápido F1.\n\nCliente: ${data.nome}\nServiço: ${data.servico}\nData/Hora: ${data.data} às ${data.hora}\nCódigo: ${codigoAgendamento}`);
+            window.open(`https://wa.me/5511937775104?text=${textMsg}`, '_blank');
+
+            form.reset();
+            if (enderecoContainer) enderecoContainer.style.display = 'none';
+            
             btn.disabled = false;
             btn.innerHTML = 'Solicitar Agendamento <i class="fas fa-calendar-check"></i>';
-        });
+
+            document.getElementById('lista-agendamentos-section').scrollIntoView({ behavior: 'smooth' });
+        }, 1000);
     });
 
     // Função para adicionar linha na tabela
@@ -167,30 +187,23 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
             btn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
 
-            fetch('PHPMailer/enviar_email.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(res => {
-                if (res.status === 'success') {
-                    alert('Mensagem enviada com sucesso!');
-                    formContatoModal.reset();
-                    fecharModalContato();
-                } else {
-                    throw new Error(res.message || 'Erro ao enviar.');
-                }
-            })
-            .catch(err => {
-                alert('Erro ao enviar: ' + err.message);
-            })
-            .finally(() => {
+            // Simulação de envio por e-mail em JavaScript
+            setTimeout(() => {
+                // Salva contato no localStorage para fins de persistência (simulando banco de dados)
+                const contatos = JSON.parse(localStorage.getItem('contatosF1')) || [];
+                contatos.unshift({
+                    ...data,
+                    dataEnvio: new Date().toLocaleString('pt-BR')
+                });
+                localStorage.setItem('contatosF1', JSON.stringify(contatos));
+
+                alert('Sua mensagem de contato foi enviada com sucesso!\n\nResponderemos o mais breve possível.');
+                formContatoModal.reset();
+                fecharModalContato();
+
                 btn.disabled = false;
                 btn.innerHTML = 'Enviar Mensagem <i class="fas fa-paper-plane"></i>';
-            });
+            }, 1000);
         });
     }
 
@@ -262,19 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Inicializa as avaliações ao carregar a página
+    // Inicializa os agendamentos e avaliações ao carregar a página
+    carregarAgendamentos();
     carregarAvaliacoes();
 
-    // Aviso para link do Facebook (em construção)
-    const facebookLink = document.querySelector('.facebook-link');
-    if (facebookLink) {
-        facebookLink.addEventListener('click', (e) => {
-            if (facebookLink.getAttribute('href') === '#') {
-                e.preventDefault();
-                alert('A nossa página do Facebook estará disponível em breve!');
-            }
-        });
-    }
+
 
     // Funcionalidade de retorno ao topo ao clicar no logo ou no título
     const mainLogo = document.getElementById('main-logo');
