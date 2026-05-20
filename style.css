@@ -179,7 +179,7 @@ header {
   font-weight: bold;
   font-size: 1.05em;
   transition: color 0.3s, transform 0.2s;
-}
+}\n\n.nav-links a.active {\n  color: #00ff7f; /* vibrant teal for active link */\n  text-decoration: underline;\n}
 
 .nav-links a:hover {
   color: #FFD700;
