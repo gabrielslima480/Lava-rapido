@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome para o ícone hamburger -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- O CSS global já contém a tipografia e as variáveis de cor -->
+  <link rel="stylesheet" href="style.css">
+  <title>Lava‑Rápido F1 – Navegação</title>
+</head>
+<body>
+<header class="navbar">
+  <!-- Logo (pode ser substituída por uma imagem) -->
+  <a href="#home" class="navbar-brand">Lava‑Rápido F1</a>
+  <!-- Botões de navegação -->
+  <nav class="nav-links" id="navMenu">
+    <a href="#home" class="active">Home</a>
+    <a href="#services">Serviços</a>
+    <a href="#pricing">Preços</a>
+    <a href="#about">Sobre</a>
+    <a href="#contact">Contato</a>
+  </nav>
+  <!-- Ícone hamburger – visível somente em telas pequenas -->
+  <a href="javascript:void(0);" class="nav-toggle"
+     aria-label="Abrir menu"
+     onclick="toggleNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</header>
+<!-- Conteúdo da página (exemplo) -->
+<main style="padding:2rem;">
+  <h2>Bem‑vindo ao Lava‑Rápido F1</h2>
+  <p>Redimensione a janela para observar o menu responsivo.</p>
+</main>
+<script>
+/* Função que alterna a classe “responsive” no header */
+function toggleNav() {
+  const header = document.querySelector('.navbar');
+  header.classList.toggle('responsive');
+}
+</script>
+</body>
+</html>
